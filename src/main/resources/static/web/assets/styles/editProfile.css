@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+header{
+    min-height: 10vh;
+    padding: 1rem;
+    background-color: green;
+}
+
+main{
+    min-height: 80vh;
+}
+
+.welcome{
+    height: 10vh !important;
+}
+
+footer{
+    min-height: 5vh;
+    padding: 1rem;
+    background-color: green;
+}
+
+nav {
+  background-color: green;
+}
+
+body {
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+  }
+  
+.pageIn{
+    width: 20rem;
+    height: 20rem;
+}

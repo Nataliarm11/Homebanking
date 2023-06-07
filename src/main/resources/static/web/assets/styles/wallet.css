@@ -1,0 +1,338 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+header{
+    min-height: 10vh;
+    padding: 1rem;
+    background-color: green;
+}
+
+main{
+    min-height: 80vh;
+}
+
+.welcome{
+    height: 10vh !important;
+}
+
+footer{
+    min-height: 5vh;
+    padding: 1rem;
+    background-color: green;
+}
+
+nav {
+  background-color: green;
+}
+
+body {
+    position: relative;
+  }
+  
+body::before {
+    content: "";
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+  
+
+.card{
+    background-color: rgba(149, 188, 143, 0.843);
+    color: black;
+}
+
+/* Card Person */
+.cardOne {
+    --cardbg: 245, 245, 245;
+    --cardBase: 50, 181, 122;
+    --cardText: black;
+    --cardTextBtn: black;
+    --cardsquares: 125, 200, 150;
+    display: flex;
+    flex-flow: column nowrap;
+    place-items: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: rgba(var(--cardbg), 1);
+    position: relative;
+    width: 220px;
+    height: 321px;
+    perspective: 1000px;
+    z-index: 0;
+    transition: all 1s ease-out;
+  }
+  
+  .cardOne:hover {
+    filter: grayscale(0%);
+    scale: 1.025;
+    box-shadow: 0 0 5em greenyellow;
+  }
+  
+  .cardOne::after,
+  .cardOne::before {
+    content: '';
+    width: 200px;
+    height: 50%;
+    display: block;
+    background-color: rgba(var(--cardsquares), .5);
+    filter: blur(10px);
+    position: absolute;
+    transition: all 5s ease-out;
+    opacity: .1;
+    z-index: 0;
+  }
+  
+  .cardOne:hover::after,
+  .cardOne:hover::before {
+    opacity: .5;
+    rotate: 60deg;
+  }
+  
+  .cardOne:hover::after {
+    translate: 100% 0;
+  }
+  
+  .cardOne:hover::before {
+    translate: -100% 0;
+  }
+  
+  .cardOne .card-title {
+    color: rgba(var(--cardText), .75);
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: .5em;
+    position: relative;
+    transition: all .3s ease-out;
+    z-index: 100;
+    text-shadow: 0px 0px 0px rgba(var(--cardText), .25);
+  }
+  
+  .cardOne:hover h3 {
+    color: rgba(var(--cardText), 1);
+    text-shadow: 0px 8px 5px rgba(var(--cardText), .35);
+  }
+  
+  .cardOne:hover span {
+    filter: grayscale(0%);
+  }
+  
+  /* Inner card */
+  .card-info::after {
+    left: -6rem;
+    bottom: 0;
+  }
+  
+  .card-info::before {
+    right: -6rem;
+    top: 1rem;
+  }
+  
+  /* Avatar container */
+  .card-info span {
+    color: green;
+    display: flex;
+    place-items: center;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: green;
+    height: 80px;
+    width: 50%;
+    box-shadow: inset 0px 2px 4px green,
+      inset 0px 2px 40px rgba(var(--cardbg), .95);
+    position: relative;
+    transition: all .3s ease-out .1s;
+    filter: grayscale(75%);
+    z-index: 0;
+  }
+  
+  .card-info span:hover .avatar {
+    scale: 1.5;
+  }
+  
+  .avatar {
+    transition: all .3s ease-out;
+    position: relative;
+  }
+  
+  /* Inner card container and UI */
+  .card-info {
+    --angle: 0deg;
+    display: flex;
+    flex-flow: column nowrap;
+    place-items: center;
+    padding: 1em;
+    margin: 0 .75em;
+    color: black;
+    background-color: rgba(220, 250, 220, 1);
+    transition: all .5s ease-out;
+    animation: animateBorder 10s linear infinite reverse;
+    border: .15em solid;
+    position: relative;
+    z-index: 10;
+    border-image: linear-gradient(var(--angle), rgba(var(--cardbg), 1), rgba(var(--cardBase), .5), rgba(var(--cardbg), 1)) 1;
+  }
+  
+  .card-info p {
+    color: black;
+    line-height: 1.25em;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    font-size: 1em;
+    margin: 1em 0;
+    transition: all .3s ease-out .3s;
+  }
+  
+  .card-info .btn {
+    display: block;
+    padding: 8px 16px;
+    background-color: green;
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: .85em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .card-info .btn:hover {
+    cursor: pointer;
+    background-color: greenyellow;
+  }
+  
+  .card-info .btn:active {
+    box-shadow: inset 0px -2px 3px rgba(var(--cardBase), .25);
+  }
+  
+  @keyframes animateBorder {
+    to {
+      --angle: 360deg;
+    }
+  }
+  
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+
+
+
+
+/* Wallet */
+.wallet {
+    --bg-color: #b2fcc6;
+    --bg-color-light: #f0e7ff;
+    --text-color-hover: #fff;
+    --box-shadow-color: rgba(206, 178, 252, 0.48);
+  }
+  
+  .card {
+    width: 220px;
+    height: 321px;
+    background: #fff;
+    border-top-right-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease-out;
+    text-decoration: none;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+    box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11),
+      0 24px 46px var(--box-shadow-color);
+  }
+  
+  .card:hover .overlay {
+    transform: scale(4) translateZ(0);
+  }
+  
+  .card:hover .circle {
+    border-color: var(--bg-color-light);
+    background: var(--bg-color);
+  }
+  
+  .card:hover .circle:after {
+    background: var(--bg-color-light);
+  }
+  
+  .card:hover p {
+    color: var(--text-color-hover);
+  }
+  
+  .card p {
+    font-size: 17px;
+    color: #4c5656;
+    margin-top: 30px;
+    z-index: 1000;
+    transition: color 0.3s ease-out;
+  }
+  
+  .circle {
+    width: 131px;
+    height: 131px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-out;
+  }
+  
+  .circle:after {
+    content: "";
+    width: 118px;
+    height: 118px;
+    display: block;
+    position: absolute;
+    background: var(--bg-color);
+    border-radius: 50%;
+    top: 7px;
+    left: 7px;
+    transition: opacity 0.3s ease-out;
+  }
+  
+  .circle svg {
+    z-index: 10000;
+    transform: translateZ(0);
+  }
+  
+  .overlay {
+    width: 118px;
+    position: absolute;
+    height: 118px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    top: 70px;
+    left: 50px;
+    z-index: 0;
+    transition: transform 0.3s ease-out;
+  }
