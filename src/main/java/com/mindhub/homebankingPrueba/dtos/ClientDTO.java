@@ -3,7 +3,7 @@ package com.mindhub.homebankingPrueba.dtos;
 import com.mindhub.homebankingPrueba.models.Account;
 import com.mindhub.homebankingPrueba.models.Client;
 import java.util.Comparator;
-import java.util.Set;
+import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
@@ -15,7 +15,7 @@ public class ClientDTO {
     private String lastName;
     private String email;
 
-    private Set<AccountDTO> accounts;
+    private List<AccountDTO> accounts;
 
 
     public ClientDTO() {  }
@@ -29,7 +29,7 @@ public class ClientDTO {
         this.email = client.getEmail();;
         this.accounts = client.getAccounts().stream()
                 .map(account -> new AccountDTO(account))
-                .collect(Collectors.toSet());
+                .collect(Collectors.toList());
     }
 
 
@@ -55,18 +55,18 @@ public class ClientDTO {
     }
 
     public String getEmail() {
-            return email;
-        }
+        return email;
+    }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public Set<AccountDTO> getAccounts() {
+    public List<AccountDTO> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Set<AccountDTO> accounts) {
+    public void setAccounts(List<AccountDTO> accounts) {
         this.accounts = accounts;
     }
 
@@ -80,5 +80,5 @@ public class ClientDTO {
                 '}';
     }
 
-    }
+}
 

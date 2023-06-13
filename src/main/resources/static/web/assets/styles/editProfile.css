@@ -38,3 +38,54 @@ body {
     width: 20rem;
     height: 20rem;
 }
+
+/* 320 HEADER */
+
+@media (max-width: 320px) {
+    .navbar-brand {
+      flex-basis: 100%;
+      text-align: center;
+    }
+    .navbar-brand img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .navbar-toggler {
+      flex-basis: 100%;
+      text-align: center;
+    }
+    .navbar-nav {
+      flex-basis: 100%;
+      justify-content: center;
+    }
+    .nav-link {
+      margin-right: 10px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .navbar-nav {
+      flex-direction: column;
+    }
+    .nav-link {
+      margin-bottom: 10px;
+    }
+  }
+  /* 320 FOOTER */
+@media (max-width: 320px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .footer div {
+    margin-bottom: 10px;
+  }
+
+  .logoFooter {
+    width: auto;
+    max-height: 250px;
+  }
+}

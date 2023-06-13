@@ -29,11 +29,9 @@ const app = createApp ({
                 this.clients=response.data;
                 console.log(this.clients)
                 this.accounts=response.data.accounts;
+
+                this.accounts.sort((a,b)=> a.id - b.id)
                 console.log(this.accounts)
-                this.firstName=response.data.firstName;
-                console.log(this.firstName)
-                this.lastName=response.data.lastName;
-                console.log(this.lastName)
 
             })
             .catch(error => console.log(error));

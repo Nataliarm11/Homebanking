@@ -3,6 +3,9 @@ package com.mindhub.homebankingPrueba.dtos;
 import com.mindhub.homebankingPrueba.models.Account;
 
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AccountDTO {
 
@@ -10,6 +13,8 @@ public class AccountDTO {
     private String number;
     private LocalDate creationDate;
     private Double balance;
+
+    private List<TransactionDTO> transactions;
 
     public AccountDTO() {
     }
@@ -19,14 +24,22 @@ public class AccountDTO {
         this.number = account.getNumber();
         this.creationDate = account.getCreationDate();
         this.balance = account.getBalance();
+        this.transactions = account.getTransactions().stream()
+                .map(transaction -> new TransactionDTO(transaction))
+                .sorted(Comparator.comparing(TransactionDTO::getId).reversed())
+                .collect(Collectors.toList());
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public List<TransactionDTO> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<TransactionDTO> transactions) {
+        this.transactions = transactions;
     }
 
     public String getNumber() {

@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import static java.util.stream.Collectors.toList;
 
-@RequestMapping("/api")
-@RestController
+@RequestMapping("/api") @RestController
 public class ClientController {
 
     @Autowired
@@ -26,7 +25,6 @@ public class ClientController {
     }
 
     @RequestMapping("clients/{id}")
-
     public ClientDTO getClient(@PathVariable Long id){
 
         return clientRepository.findById(id)
@@ -34,10 +32,4 @@ public class ClientController {
                 .orElse(null);
 
     }
-
-
-
-
-
-
 }
