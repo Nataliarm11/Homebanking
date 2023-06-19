@@ -74,6 +74,12 @@ body {
   }
   /* 320 FOOTER */
 @media (max-width: 320px) {
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
   .footer {
     flex-direction: column;
     text-align: center;

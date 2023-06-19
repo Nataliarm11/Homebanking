@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 public class AccountDTO {
 
-    private Long id;
+    private long id;
     private String number;
     private LocalDate creationDate;
-    private Double balance;
+    private double balance;
 
     private List<TransactionDTO> transactions;
 
@@ -30,7 +30,7 @@ public class AccountDTO {
                 .collect(Collectors.toList());
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -58,11 +58,11 @@ public class AccountDTO {
         this.creationDate = creationDate;
     }
 
-    public Double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 }

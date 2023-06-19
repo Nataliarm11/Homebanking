@@ -1,21 +1,20 @@
 package com.mindhub.homebankingPrueba.dtos;
 
-import com.mindhub.homebankingPrueba.models.Account;
 import com.mindhub.homebankingPrueba.models.Client;
-import java.util.Comparator;
+
 import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class ClientDTO {
 
-    private Long id;
+    private long id;
     private String firstName;
     private String lastName;
     private String email;
 
     private List<AccountDTO> accounts;
+
+    private List<ClientLoanDTO> loans;
 
 
     public ClientDTO() {  }
@@ -30,11 +29,12 @@ public class ClientDTO {
         this.accounts = client.getAccounts().stream()
                 .map(account -> new AccountDTO(account))
                 .collect(Collectors.toList());
+        this.loans = client.getLoans().stream()
+                .map(loan -> new ClientLoanDTO(loan))
+                .collect(Collectors.toList());
     }
 
-
-
-    public Long getId(){
+    public long getId(){
         return id;
     }
 
@@ -70,15 +70,12 @@ public class ClientDTO {
         this.accounts = accounts;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public List<ClientLoanDTO> getLoans() {
+        return loans;
     }
 
+    public void setLoans(List<ClientLoanDTO> loans) {
+        this.loans = loans;
+    }
 }
 

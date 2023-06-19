@@ -12,7 +12,7 @@ public class TransactionDTO {
     private long id;
 
     private TransactionType type;
-    private Double amount;
+    private double amount;
     private String description;
     private LocalDateTime date;
 
@@ -32,7 +32,7 @@ public class TransactionDTO {
         return type;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 

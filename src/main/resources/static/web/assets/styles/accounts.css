@@ -433,6 +433,12 @@ body::before {
 
 /* 320 FOOTER */
 @media (max-width: 320px) {
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
   .footer {
     flex-direction: column;
     text-align: center;
@@ -447,4 +453,82 @@ body::before {
     width: auto;
     max-height: 250px;
   }
+  
 }
+
+/* Tarjeta accounts */
+
+.cardLoan {
+  width: 190px;
+  height: 120px;
+  transition: all .5s;
+  box-shadow: 15px 15px 30px rgba(25, 25, 25, 0.11),
+             -15px -15px 30px rgba(60, 60, 60, 0.082);
+  text-align: center;
+  overflow: hidden;
+}
+
+.cardLoan:hover {
+  height: 254px;
+  background: linear-gradient(360deg, #edededc5 60%, hsla(0, 0%, 13%, 1) 70%);
+}
+
+.cardLoan .headerLoan {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #212121;
+  margin-bottom: 16px;
+}
+
+.cardLoan .headerLoan .img-box {
+  width: 50px;
+}
+
+.cardLoan .headerLoan .title {
+  font-size: 1.1em;
+  letter-spacing: .1em;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 4px 0 14px 0;
+  transition: all .5s;
+  color: #edededc5;
+}
+
+.cardLoan:hover .headerLoan {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 96%);
+}
+
+.cardLoan:hover .card .headerLoan .title {
+  padding: 0;
+}
+
+.cardLoan .content {
+  display: block;
+  text-align: justify;
+  color: #212121;
+  margin: 0 18px;
+}
+
+.cardLoan .content p {
+  transition: all .5s;
+  font-size: 1em;
+  margin-bottom: 8px;
+}
+
+.cardLoan .content a {
+  color: #1d8122;
+  cursor: pointer;
+  transition: all .5s;
+  font-size: .8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.card .content .btn-link:hover {
+  border-bottom: 1px solid #1d8122;
+}
+
+

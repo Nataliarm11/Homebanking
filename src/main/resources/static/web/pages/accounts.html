@@ -51,10 +51,10 @@
             <div class="card" style="width: 18rem;" v-for=" (client, index) of accounts" >
                 <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
                 <div class="card-body">
-                  <h5 class="card-title">Account number:{{client.number}} </h5>
+                  <h5 class="card-title">Account number: {{client.number}} </h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-black">Balance: {{client.balance.toFixed(2)}} </li>
+                  <li class="list-group-item text-black">Balance: ${{client.balance.toFixed(1)}} </li>
                   <li class="list-group-item text-black">Date of Creation: {{client.creationDate}} </li>
                 </ul>
                 <div class="card-body text-center">
@@ -63,6 +63,33 @@
                 </div>
             </div>
         </div>
+
+<div class="d-flex justify-content-center gap-5 flex-wrap">
+    <div class="cardLoan" v-for="loan of loans">
+        <div class="headerLoan " >
+            <div class="img-box">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M3 21l18 0" />
+                    <path d="M3 10l18 0" />
+                    <path d="M5 6l7 -3l7 3" />
+                    <path d="M4 10l0 11" />
+                    <path d="M20 10l0 11" />
+                    <path d="M8 14l0 3" />
+                    <path d="M12 14l0 3" />
+                    <path d="M16 14l0 3" />
+                  </svg>
+            </div>
+            <h1 class="title text-center mx-5">My loans:{{loan.loanName}}</h1>
+        </div>
+        <div class="content">
+            <p> Amount: ${{loan.amount.toFixed(2)}} </p>
+            <p> Payments: {{loan.payments}} fee </p>
+        </div>
+    </div>
+  </div>
+
+
         <div class="loader">
           <div class="loader__bar"></div>
           <div class="loader__bar"></div>

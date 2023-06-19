@@ -136,7 +136,7 @@
               <tr v-for="transfer of transactions ">
                 <td v-if="transfer.type == `DEBIT`" class="text-bg-danger text-center">{{transfer.type}}</td>
                 <td v-else class="text-bg-success text-center">{{transfer.type}}</td>
-                <td class="text-center">{{transfer.amount}}</td>
+                <td class="text-center">$ {{transfer.amount.toFixed(1)}}</td>
                 <td class="text-center">{{transfer.description}}</td>
                 <td class="text-center">{{transfer.date.slice(0,10)}}</td>
                 <td class="text-center">{{transfer.date.slice(11,16)}}</td>

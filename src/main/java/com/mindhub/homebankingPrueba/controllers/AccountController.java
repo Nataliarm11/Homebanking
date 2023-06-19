@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestMapping("/api") @RestController
@@ -18,11 +18,11 @@ public class AccountController {
     private AccountRepository accountRepository;
 
     @RequestMapping("/accounts")
-    public List<AccountDTO> getaccounts(){
+    public Set<AccountDTO> getaccountsDTO(){
         return accountRepository.findAll()
                 .stream()
                 .map(account -> new AccountDTO(account))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @RequestMapping("/accounts/{id}")
