@@ -1,6 +1,8 @@
 package com.mindhub.homebankingPrueba.dtos;
 
+import com.mindhub.homebankingPrueba.models.Card;
 import com.mindhub.homebankingPrueba.models.Client;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,12 +18,11 @@ public class ClientDTO {
 
     private List<ClientLoanDTO> loans;
 
+    private List<CardDTO> cards;
 
     public ClientDTO() {  }
 
-
     public ClientDTO(Client client) {
-
         this.id = client.getId();
         this.firstName = client.getFirstName();
         this.lastName = client.getLastName();
@@ -32,6 +33,10 @@ public class ClientDTO {
         this.loans = client.getLoans().stream()
                 .map(loan -> new ClientLoanDTO(loan))
                 .collect(Collectors.toList());
+        this.cards=client.getCards().stream()
+                .map(card -> new CardDTO(card))
+                .collect(Collectors.toList());
+
     }
 
     public long getId(){
@@ -76,6 +81,14 @@ public class ClientDTO {
 
     public void setLoans(List<ClientLoanDTO> loans) {
         this.loans = loans;
+    }
+
+    public List<CardDTO> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<CardDTO> cards) {
+        this.cards = cards;
     }
 }
 

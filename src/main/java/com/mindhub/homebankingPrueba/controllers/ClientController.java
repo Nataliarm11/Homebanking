@@ -11,7 +11,8 @@ import java.util.Set;
 import static java.util.stream.Collectors.toSet;
 
 
-@RequestMapping("/api") @RestController
+@RequestMapping("/api")
+@RestController
 public class ClientController {
 
     @Autowired
@@ -27,7 +28,6 @@ public class ClientController {
 
     @RequestMapping("clients/{id}")
     public ClientDTO getClientDTO(@PathVariable Long id){
-
         return clientRepository.findById(id)
                 .map(ClientDTO::new)
                 .orElse(null);

@@ -2,7 +2,6 @@ package com.mindhub.homebankingPrueba;
 
 import com.mindhub.homebankingPrueba.models.*;
 import com.mindhub.homebankingPrueba.repositories.*;
-import net.bytebuddy.asm.Advice;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,8 +9,7 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+
 
 @SpringBootApplication
 public class HomebankingPruebaApplication {
@@ -21,8 +19,9 @@ public class HomebankingPruebaApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository) {
+	public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
 		return args -> {
+
 
 			// Creo los clientes
 			Client client1 = new Client("Melba", "Morel", "melba@mindhub.com");
@@ -80,6 +79,20 @@ public class HomebankingPruebaApplication {
 			ClientLoan personalNatalia = new ClientLoan(100000.0, 24);
 			ClientLoan autoNatalia = new ClientLoan(200000.0, 36);
 
+			// Crear tarjeta de débito GOLD para Melba
+			LocalDateTime fromDate = LocalDateTime.now();
+			LocalDateTime thruDate = fromDate.plusYears(5);
+
+			//Crear tarjeta de débito GOLD para Melba
+			String cardHolderMelba = client1.getFirstName() + " " + client1.getLastName();
+			Card debitCard1 = new Card(cardHolderMelba, CardType.DEBIT, CardColor.GOLD, "4000-0012-3456-7899", (short) 693, thruDate, fromDate);
+
+			// Crear tarjeta de crédito Titanium para Melba
+			Card creditCard1 = new Card(cardHolderMelba, CardType.CREDIT, CardColor.TITANIUM, "5303-6101-4684-9428", (short) 369, thruDate, fromDate);
+
+			// Crear tarjeta de crédito Silver para el segundo cliente
+			String cardHolderNatalia = client2.getFirstName() + " " + client2.getLastName();
+			Card silverCard1 = new Card(cardHolderNatalia, CardType.CREDIT, CardColor.SILVER, "3694-4842-4753-2348", (short) 789, thruDate, fromDate);
 
 			//Asocio las cuentas
 			client1.addAccount(account1);
@@ -143,6 +156,14 @@ public class HomebankingPruebaApplication {
 			clientLoanRepository.save(personalMelba);
 			clientLoanRepository.save(personalNatalia);
 			clientLoanRepository.save(autoNatalia);
+
+			//Asocio y guardo
+			client1.addCard(debitCard1);
+			cardRepository.save(debitCard1);
+			client1.addCard(creditCard1);
+			cardRepository.save(creditCard1);
+			client2.addCard(silverCard1);
+			cardRepository.save(silverCard1);
 
 
 		};
