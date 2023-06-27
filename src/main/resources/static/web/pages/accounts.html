@@ -16,103 +16,125 @@
 </head>
 <body>
 
-    <header>
-      <nav class="container navbar navbar-expand-md navbar-text" data-bs-theme="dark">
-        <div class="container-fluid justify-content-between">
-            <a class="navbar-brand" href="#">
-                <img class="logoHeader w-25" src="../assets/images/BankSinFondo.png" alt="logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active d-flex justify-content-center text-black" href="../pages/wallet.html">Wallet</a>
-                    <a class="nav-link active d-flex justify-content-center text-black" href="../pages/editProfile.html">Edit profile</a>
-                    <a class="nav-link active d-flex justify-content-center fw-bold bg-white rounded-pill  text-black" href="#">Accounts</a>
-                    <a class="nav-link active d-flex justify-content-center text-black" href="../pages/cards.html">Cards</a>
-                    <a class="nav-link active d-flex justify-content-center text-black" href="../pages/index.html">Sign off</a>
+    <div id="app">
+        <header>
+            <nav class="container navbar navbar-expand-md navbar-text" data-bs-theme="dark">
+              <div class="container-fluid justify-content-between">
+                  <a class="navbar-brand" href="#">
+                      <img class="logoHeader w-25" src="../assets/images/BankSinFondo.png" alt="logo">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
+                      <div class="navbar-nav">
+                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/wallet.html">Wallet</a>
+                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/editProfile.html">Edit profile</a>
+                          <a class="nav-link active d-flex justify-content-center fw-bold bg-white rounded-pill  text-black" href="#">Accounts</a>
+                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/cards.html">Cards</a>
+                          <button class="nav-link active d-flex justify-content-center text-black bg-danger rounded-pill"  @click.prevent="logOut">Sign Out</button>
+                      </div>
+                  </div>
+              </div>
+            </nav>
+          </header>
+      
+          <main>
+              <h4 class="text-center text-black py-4">
+                  <span class="text-black fw-bold p-2">  {{clients.firstName}} {{clients.lastName}}.</span>
+              </h4>
+      
+              <h5 class="px-5 py-2 text-black">
+                  We're excited to present your bank accounts with R Bank. These accounts are designed to meet your financial needs and provide you with a seamless banking experience. Take a look below to find the details of your accounts and start managing your finances with ease.
+              </h5>
+
+              <h5 class="px-5 py-2 text-black fw-bolder">
+                Accounts:
+              </h5>
+
+              <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5 text-black">
+                  <div class="card" style="width: 18rem;" v-for=" (client, index) of accounts" >
+                      <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
+                      <div class="card-body">
+                        <h5 class="card-title">Account number: {{client.number}} </h5>
+                      </div>
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-black">Balance: ${{client.balance.toFixed(1)}} </li>
+                        <li class="list-group-item text-black">Date of Creation: {{client.creationDate}} </li>
+                      </ul>
+                      <div class="card-body text-center">
+                        <a class="btn btn-secondary text-black" v-bind:href="'./account.html?id='+client.id" role="button">See my transactions</a>
+                        <!-- <a href="#" class="card-link">Another link</a> -->
+                      </div>
+                  </div>
+                  <div  v-if="accounts.length === 0"  class=" d-flex justify-content-center pt-5 pb-5" >
+                   <h3>You do not have accounts.</h3>
+                  </div>
+              </div>
+
+              <h5 class="px-5 py-2 text-black fw-bolder">
+                Loans:
+              </h5>
+
+              <div class="d-flex justify-content-center gap-5 flex-wrap">
+                <div class="cardLoan" v-for="loan of loans">
+                    <div class="headerLoan " >
+                        <div class="img-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 21l18 0" />
+                                <path d="M3 10l18 0" />
+                                <path d="M5 6l7 -3l7 3" />
+                                <path d="M4 10l0 11" />
+                                <path d="M20 10l0 11" />
+                                <path d="M8 14l0 3" />
+                                <path d="M12 14l0 3" />
+                                <path d="M16 14l0 3" />
+                              </svg>
+                        </div>
+                        <h1 class="title text-center mx-5">My loans:{{loan.loanName}}</h1>
+                    </div>
+                    <div class="content">
+                        <p> Amount: ${{loan.amount.toFixed(2)}} </p>
+                        <p> Payments: {{loan.payments}} fee </p>
+                    </div>
+                </div> 
+
+                <div  v-if="loans.length === 0"  class=" d-flex justify-content-center pt-5 pb-5" >
+                    <h3>You do not have loans.</h3>
                 </div>
+            
+
+            </div>  
+
+            <div class="loader">
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__bar"></div>
+                <div class="loader__ball"></div>
+              </div>
+
+          
+          </main>
+
+      
+          <footer class="footer d-flex flex-wrap align-items-center justify-content-between px-2">
+            <div class="nombre text-black">
+                <h4>Natalia Requena Medina®</h4>
             </div>
-        </div>
-      </nav>
-    </header>
-
-    <main id="app">
-        <h4 class="text-center text-black py-4">
-            <span class="text-black fw-bold p-2">  {{clients.firstName}} {{clients.lastName}}.</span>
-        </h4>
-
-        <h5 class="px-5 py-2 text-black">
-            We're excited to present your bank accounts with R Bank. These accounts are designed to meet your financial needs and provide you with a seamless banking experience. Take a look below to find the details of your accounts and start managing your finances with ease.
-        </h5>
-
-        <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5 text-black">
-
-            <div class="card" style="width: 18rem;" v-for=" (client, index) of accounts" >
-                <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
-                <div class="card-body">
-                  <h5 class="card-title">Account number: {{client.number}} </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item text-black">Balance: ${{client.balance.toFixed(1)}} </li>
-                  <li class="list-group-item text-black">Date of Creation: {{client.creationDate}} </li>
-                </ul>
-                <div class="card-body text-center">
-                  <a class="btn btn-secondary text-black" v-bind:href="'./account.html?id='+client.id" role="button">See my transactions</a>
-                  <!-- <a href="#" class="card-link">Another link</a> -->
-                </div>
+            <div class="cohort text-black">
+                <h4>Cohort 47</h4>
             </div>
-        </div>
-
-<div class="d-flex justify-content-center gap-5 flex-wrap">
-    <div class="cardLoan" v-for="loan of loans">
-        <div class="headerLoan " >
-            <div class="img-box">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M3 21l18 0" />
-                    <path d="M3 10l18 0" />
-                    <path d="M5 6l7 -3l7 3" />
-                    <path d="M4 10l0 11" />
-                    <path d="M20 10l0 11" />
-                    <path d="M8 14l0 3" />
-                    <path d="M12 14l0 3" />
-                    <path d="M16 14l0 3" />
-                  </svg>
+            <div class="task text-center">
+                <img src="../assets/images/RBANK.png" class="logoFooter h-50 w-25" alt="">
             </div>
-            <h1 class="title text-center mx-5">My loans:{{loan.loanName}}</h1>
-        </div>
-        <div class="content">
-            <p> Amount: ${{loan.amount.toFixed(2)}} </p>
-            <p> Payments: {{loan.payments}} fee </p>
-        </div>
+        </footer>
+
     </div>
-  </div>
 
 
-        <div class="loader">
-          <div class="loader__bar"></div>
-          <div class="loader__bar"></div>
-          <div class="loader__bar"></div>
-          <div class="loader__bar"></div>
-          <div class="loader__bar"></div>
-          <div class="loader__ball"></div>
-        </div>
-
-    </main>
-
-    <footer class="footer d-flex flex-wrap align-items-center justify-content-between px-2">
-      <div class="nombre text-black">
-          <h4>Natalia Requena Medina®</h4>
-      </div>
-      <div class="cohort text-black">
-          <h4>Cohort 47</h4>
-      </div>
-      <div class="task text-center">
-          <img src="../assets/images/RBANK.png" class="logoFooter h-50 w-25" alt="">
-      </div>
-  </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>

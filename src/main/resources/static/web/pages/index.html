@@ -25,40 +25,72 @@
     </header>
 
     <main id="app">
-        <div class="bg-white welcome d-flex align-items-center py-3 px-2">
+        <div class="bg-white welcome d-flex justify-content-around align-items-center p-5">
             <h2>Welcome to the banking future</h2>
-        </div>
-        <div class="mainContainers d-flex flex-wrap justify-content-around p-5">
             <div>
-                <form class="px-4 py-3 text-white">
-                    <div class="mb-3">
-                      <label for="usser" class="form-label">Email address</label>
-                      <input type="email" class=" usser form-control" id="usser" placeholder="email@example.com">
+              <form class="text-black d-flex  gap-3">
+                  <div class="">
+                    <label for="usser" class="form-label">Email address</label>
+                    <input type="email" class="usser form-control" id="usser" placeholder="email@example.com" v-model="email" required>
+                  </div>
+                  <div class="">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class=" password form-control" id="password" placeholder="Password" v-model="password" required>
+                  </div>
+                  <!-- <div class="mb-3">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                      <label class="form-check-label" for="dropdownCheck">
+                        Remember me
+                      </label>
                     </div>
-                    <div class="mb-3">
-                      <label for="password class="form-label">Password</label>
-                      <input type="password" class=" password form-control" id="password" placeholder="Password">
-                    </div>
-                    <div class="mb-3">
-                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                        <label class="form-check-label" for="dropdownCheck">
-                          Remember me
-                        </label>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-primary"><a href="../pages/wallet.html" class="text-white text-decoration-none">Sign in</a></button>
-                  </form>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item text-white" href="#">New around here? Sign up</a>
-                  <a class="dropdown-item text-white" href="#">Forgot password?</a>
+                  </div> -->
+                  <button class="btn btn-secondary" @click.prevent="logIn">Sign in</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <!-- <a class="dropdown-item text-white" href="#">Forgot password?</a> -->
+          </div>
+        </div>
+
+        <div class="mainContainers d-flex flex-wrap justify-content-around p-5">
+
+            <div>
+              <form class="form">
+                <p class="title">Register </p>
+                <p class="message text-white">Signup now and get full access to our app. </p>
+                    <div class="flex">
+                    <label>
+                        <input type="text" class="input" v-model="firstNameRegister">
+                        <span>Firstname</span>
+                    </label>
+            
+                    <label>
+                        <input type="text" class="input" v-model="lastNameRegister">
+                        <span>Lastname</span>
+                    </label>
+                </div>     
+                <label>
+                    <input type="email" class="input"v-model="emailRegister">
+                    <span>Email</span>
+                </label> 
+                    
+                <label>
+                    <input type="password" class="input" v-model="passwordRegister">
+                    <span>Password</span>
+                </label>
+                <button class="btn btn-secondary" @click.prevent="register">Register and Sign In</button>
+            </form>
             </div>
-            <div class="cardBox ">
-              <div class="card p-1 ">
+
+            <div class="cardBox p-5  d-flex flex-wrap justify-content-around ">
+              <div class="card">
                 <p><h4 class="text-center">Welcome to R Bank!</h4>your trusted financial partner. With our innovative services and personalized approach, we are committed to helping you achieve your financial goals. Experience the convenience of our secure online banking platform and explore our range of tailored solutions designed to meet your unique needs. </p>
               </div>
             </div>
+
         </div>
+
+
     </main>
 
     <footer class="footer d-flex flex-wrap align-items-center justify-content-between px-2">

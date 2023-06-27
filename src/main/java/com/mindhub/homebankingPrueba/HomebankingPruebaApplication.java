@@ -2,10 +2,13 @@ package com.mindhub.homebankingPrueba;
 
 import com.mindhub.homebankingPrueba.models.*;
 import com.mindhub.homebankingPrueba.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -13,6 +16,9 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class HomebankingPruebaApplication {
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingPruebaApplication.class, args);
@@ -24,12 +30,14 @@ public class HomebankingPruebaApplication {
 
 
 			// Creo los clientes
-			Client client1 = new Client("Melba", "Morel", "melba@mindhub.com");
-			Client client2 = new Client("Natalia", "Requena", "nrequena@gmail.com");
+			Client client1 = new Client("Melba", "Morel", "melba@mindhub.com", passwordEncoder.encode("Melba12345"));
+			Client client2 = new Client("Natalia", "Requena", "nrequena@gmail.com", passwordEncoder.encode("Nat12345"));
+			Client admin = new Client("admin", "admin", "admin@admin.com", passwordEncoder.encode("admin12345"));
 
 			// Guardo los clientes en la base de datos
 			clientRepository.save(client1);
 			clientRepository.save(client2);
+			clientRepository.save(admin);
 
 			// Creo la primera cuenta para el cliente Melba
 			Account account1 = new Account("VIN001", LocalDate.now(), 5000.0);
