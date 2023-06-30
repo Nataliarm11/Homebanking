@@ -8,7 +8,7 @@
 header{
     min-height: 10vh;
     padding: 1rem;
-    background-color: green;
+    background-color: #008f39;
 }
 
 main{
@@ -22,18 +22,18 @@ main{
 footer{
     min-height: 5vh;
     padding: 1rem;
-    background-color: green;
+    background-color: #008f39;
 }
 
 nav {
-  background-color: green;
+  background-color: #008f39;
 }
 
 body {
     position: relative;
   }
   
-  body::before {
+  /* body::before {
     content: "";
     background-image: url(../images/fondoSiete.jpg);
     background-position: left;
@@ -44,7 +44,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-  }
+  } */
   
 
 
@@ -52,7 +52,7 @@ body {
 
 
 .divNav{
-    background-color: green;
+    background-color: #008f39;
 }
 
 

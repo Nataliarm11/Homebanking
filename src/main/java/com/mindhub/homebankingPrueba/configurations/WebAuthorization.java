@@ -28,8 +28,8 @@ public class WebAuthorization {
                 .antMatchers(HttpMethod.POST,"/api/clients").permitAll()
                 .antMatchers("/api/clients/current","/api/accounts/**" ).permitAll()
                 .antMatchers("/web/pages/account.html","/web/pages/accounts.html","/web/pages/cards.html","/web/pages/editProfile.html","/web/pages/wallet.html").hasAuthority("CLIENT")
-                .antMatchers("/rest/**", "/h2-console/**", "/api/**", "/web/pages/manager.html").hasAuthority("ADMIN");
-
+                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers("/rest/**", "/api/**", "/web/pages/manager.html").hasAuthority("ADMIN");
 
         http.formLogin()
                 .usernameParameter("email")

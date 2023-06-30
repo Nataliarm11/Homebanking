@@ -8,7 +8,8 @@
 header{
   min-height: 10vh;
   padding: 1rem;
-  background-color: green;
+  /* background-color: green; */
+  background-color: #008f39;
 }
 
 main{
@@ -22,18 +23,21 @@ main{
 footer{
   min-height: 5vh;
   padding: 1rem;
-  background-color: green;
+  /* background-color: green; */
+  background-color: #008f39;
 }
 
 nav {
-background-color: green;
+/* background-color: green; */
+background-color: #008f39;
 }
 
 body {
   position: relative;
+  background-color: white;
 }
 
-body::before {
+/* body::before {
   content: "";
   background-image: url(../images/fondoSiete.jpg);
   background-position: left;
@@ -44,19 +48,12 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-}
-
-
-.card{
-  background-color: rgba(149, 188, 143, 0.843);
-  color: black;
-}
-
-
-
+} */
 
 .divNav{
-  background-color: green;
+  /* background-color: green; */
+  background-color: #008f39;
+  
 }
 
 /* loader */
@@ -117,7 +114,8 @@ body::before {
   left: 0;
   width: 10px;
   height: 10px;
-  background: green;
+  /* background: green; */
+  background: #008f39;
   border-radius: 50%;
   -webkit-animation: ball624 4s infinite;
   animation: ball624 4s infinite;
@@ -528,7 +526,93 @@ body::before {
 }
 
 .card .content .btn-link:hover {
-  border-bottom: 1px solid #1d8122;
+  border-bottom: 1px solid #008f39;
 }
+
+
+
+
+
+/* carta */
+
+.card-container {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.card .front-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+}
+
+.card .front-content p {
+  font-size: 32px;
+  font-weight: 700;
+  opacity: 1;
+  background: linear-gradient(-45deg, #03d356 0%, #18ac53 100% );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
+}
+
+.card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(-45deg, #03d356 0%, #18ac53 100% );
+  color: #e8e8e8;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translateY(96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card .content .heading {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.card:hover .content {
+  transform: translateY(0);
+}
+
+.card:hover .front-content {
+  transform: translateY(-30%);
+}
+
+.card:hover .front-content p {
+  opacity: 0;
+}
+
+.card .content {
+  pointer-events: auto;
+}
+
+
+
+
 
 

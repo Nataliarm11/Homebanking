@@ -26,14 +26,14 @@
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                   </button>
-                  <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
+                  <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
                       <div class="navbar-nav">
                           <a class="nav-link active d-flex justify-content-center text-black" href="../pages/wallet.html">Wallet</a>
                           <a class="nav-link active d-flex justify-content-center text-black" href="../pages/editProfile.html">Edit profile</a>
-                          <a class="nav-link active d-flex justify-content-center fw-bold bg-white rounded-pill  text-black" href="#">Accounts</a>
+                          <a class="nav-link active d-flex justify-content-center fw-bold bg-white rounded-1  text-black" href="#">Accounts</a>
                           <a class="nav-link active d-flex justify-content-center text-black" href="../pages/cards.html">Cards</a>
-                          <button class="nav-link active d-flex justify-content-center text-black bg-danger rounded-pill"  @click.prevent="logOut">Sign Out</button>
                       </div>
+                      <a class="btn btn-danger text-black fw-bold d-flex justify-content-center align-items-center" href="" @click.prevent="logOut">Sign Out</a>
                   </div>
               </div>
             </nav>
@@ -52,35 +52,47 @@
                 Accounts:
               </h5>
 
-              <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5 text-black">
-                  <div class="card" style="width: 18rem;" v-for=" (client, index) of accounts" >
-                      <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
-                      <div class="card-body">
-                        <h5 class="card-title">Account number: {{client.number}} </h5>
-                      </div>
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item text-black">Balance: ${{client.balance.toFixed(1)}} </li>
-                        <li class="list-group-item text-black">Date of Creation: {{client.creationDate}} </li>
-                      </ul>
-                      <div class="card-body text-center">
-                        <a class="btn btn-secondary text-black" v-bind:href="'./account.html?id='+client.id" role="button">See my transactions</a>
-                        <!-- <a href="#" class="card-link">Another link</a> -->
-                      </div>
+              <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5">
+                <div class="card-container" v-for=" (client, index) of accounts">
+                    <div class="card">
+                    <div class="front-content">
+                        <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
+                    </div>
+                    <div class="content">
+                      <h5 class="card-title text-center text-black"> <span class="fw-bold text-black">Account number:</span><br>{{client.number}}</h5>
+                      <h6 class="text-black">
+                        <span class="fw-bold text-black">Balance:</span>
+                         ${{client.balance.toFixed(1)}}
+                      </h6>
+                      <h6 class="text-black">
+                        <span class="fw-bold text-black">Date of Creation:</span>
+                         {{client.creationDate}}
+                      </h6> 
+                      <a class="btn btn-light text-black fw-bold" v-bind:href="'./account.html?id='+client.id" role="button">See my transactions</a>
+                    </div>
                   </div>
-                  <div  v-if="accounts.length === 0"  class=" d-flex justify-content-center pt-5 pb-5" >
-                   <h3>You do not have accounts.</h3>
+                  <div  v-if="accounts.length == 0"  class=" d-flex justify-content-center pt-5 pb-5" >
+                    <h3>You do not have accounts.</h3>
+                  </div>
                   </div>
               </div>
+
+              <div class="d-flex justify-content-center p-5">
+                <button v-if="accounts.length<3" class="btn btn-secondary"  @click.prevent="createAccount">Create account</button>
+              </div>
+
+
+
 
               <h5 class="px-5 py-2 text-black fw-bolder">
                 Loans:
               </h5>
 
               <div class="d-flex justify-content-center gap-5 flex-wrap">
-                <div class="cardLoan" v-for="loan of loans">
+                <div class="cardLoan border border-success" v-for="loan of loans">
                     <div class="headerLoan " >
                         <div class="img-box">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#008f39" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M3 21l18 0" />
                                 <path d="M3 10l18 0" />
@@ -103,6 +115,8 @@
                 <div  v-if="loans.length === 0"  class=" d-flex justify-content-center pt-5 pb-5" >
                     <h3>You do not have loans.</h3>
                 </div>
+
+
             
 
             </div>  

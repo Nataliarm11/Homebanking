@@ -21,11 +21,15 @@ const app = createApp({
                 axios.post('/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' }})
                     .then(response => {
                         console.log("Welcome");
-                        window.location.href = '/web/pages/wallet.html';
+                        window.location.href = '/web/pages/accounts.html';
                     })
                     .catch(error => console.log(error));
             } else {
-                alert("Please fill in all fields");
+                Swal.fire({
+                    title: "Error",
+                    text: "Verify that the email and password are filled out and correct.",
+                    icon: "error"
+                });
             }
         },
         
@@ -41,14 +45,18 @@ const app = createApp({
                         console.log("Registered");
                         axios.post('/api/login', `email=${this.emailRegister}&password=${this.passwordRegister}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' }})
                             .then(response => {
-                                console.log("Welcome");
-                                window.location.href = '/web/pages/wallet.html';
+                                console.log(response);
+                                window.location.href = '/web/pages/accounts.html';
                             })
                             .catch(error => console.log(error));
                     })
                     .catch(error => console.log(error));
             } else {
-                alert("Please fill in all fields");
+                Swal.fire({
+                    title: "Error",
+                    text: "Check that all fields are filled out",
+                    icon: "error"
+                });
             }
         },
         

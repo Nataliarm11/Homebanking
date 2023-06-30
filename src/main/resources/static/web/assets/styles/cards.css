@@ -8,7 +8,7 @@
 header{
   min-height: 10vh;
   padding: 1rem;
-  background-color: green;
+  background-color: #008f39;
 }
   
 main{
@@ -18,18 +18,19 @@ main{
 footer{
   min-height: 5vh;
   padding: 1rem;
-  background-color: green;
+  background-color: #008f39;
 }
   
 nav {
-  background-color: green;
+  background-color: #008f39;
 }
   
 body {
   position: relative;
+  background-color: white;
 }
   
-body::before {
+/* body::before {
   content: "";
   background-image: url(../images/fondoSiete.jpg);
   background-position: left;
@@ -40,10 +41,10 @@ body::before {
   width: 100%;
   height: 100%;
   z-index: -1;
-}
+} */
 
 .divNav{
-  background-color: green;
+  background-color: #008f39;
 }
 
 /* 320 HEADER */
@@ -146,7 +147,7 @@ body::before {
 }
 
 .titanium {
-  background: linear-gradient(321.03deg, silver, lightgray) !important; 
+  background: linear-gradient(321.03deg, rgb(119, 117, 117), rgb(139, 138, 138)) !important; 
 } 
 
 .gold {
@@ -154,7 +155,7 @@ body::before {
 }
     
 .silver {
-  background: linear-gradient(321.03deg, rgb(88, 76, 76), rgb(116, 106, 87)) !important;;
+  background: linear-gradient(321.03deg, silver, lightgray) !important;;
 }
 
 
@@ -177,7 +178,6 @@ body::before {
   width: 180%;
   height: 120%;
   border-radius: 100%;
-  background-image: linear-gradient(to right top, #a3d4e7, #a7d5e6, #abd5e4, #aed6e3, #b2d6e2, #aed4e2, #abd3e1, #a7d1e1, #9bcee1, #8ecae1, #81c7e1, #73c3e1);
   filter: blur(10px);
   opacity: 0.15;
 }
@@ -195,7 +195,7 @@ body::before {
     right: -120px;
     width: 300px;
     height: 250px;
-    background: linear-gradient(321.03deg, #2daf34 0%, #1ca422 91.45%);
+    background: linear-gradient(-45deg, #03d356 0%, #18ac53 100% );
     border-top-left-radius: 100%;
   }
   .card-bg::before {
@@ -313,7 +313,7 @@ body::before {
     align-items: center;
     color: #021318;
     font-family: "Mr Dafoe", cursive;
-    font-size: 38px;
+    font-size: 25px;
     font-weight: 400;
   }
   .card-signature::before {
@@ -322,7 +322,7 @@ body::before {
     top: -15px;
     left: 0;
     font-family: "Overpass Mono", monospace;
-    font-size: 9px;
+    font-size: 10px;
     color: #eeecec;
   }
   .card-seccode {
@@ -345,4 +345,13 @@ body::before {
     right: 25px;
     top: 30px;
   }
+
+
+  img {
+    max-width: 25%;
+    height: auto;
+  }
+  
+  
+
   

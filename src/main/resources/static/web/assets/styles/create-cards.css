@@ -1,0 +1,155 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+  }
+    
+  header{
+    min-height: 10vh;
+    padding: 1rem;
+    background-color: #008f39;
+  }
+    
+  main{
+    min-height: 80vh;
+  }
+  
+  footer{
+    min-height: 5vh;
+    padding: 1rem;
+    background-color: #008f39;
+  }
+    
+  nav {
+    background-color: #008f39;
+  }
+    
+  body {
+    position: relative;
+  }
+    
+  /* body::before {
+    content: "";
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+   */
+  .divNav{
+    background-color: #008f39;
+  }
+  
+  /* 320 HEADER */
+  
+  @media (max-width: 320px) {
+  .navbar-brand {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  
+  .navbar-brand img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .navbar-toggler {
+    flex-basis: 100%;
+    text-align: center;
+  }
+  
+  .navbar-nav {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+  
+  .nav-link {
+    margin-right: 10px;
+  }
+  }
+    
+  @media (max-width: 767px) {
+  
+  .nav-link {
+    margin-bottom: 10px;
+  }
+  }
+    
+    /* 320 FOOTER */
+  @media (max-width: 320px) {
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+  
+    .footer {
+      flex-direction: column;
+      text-align: center;
+      padding: 10px;
+    }
+  
+    .footer div {
+      margin-bottom: 10px;
+    }
+  
+    .logoFooter {
+      width: auto;
+      max-height: 250px;
+    }
+      
+  }
+
+
+/* FORMULARIO */
+
+.form-create-card {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #008f39;
+  font-family: Arial, sans-serif;
+}
+
+.form-create-card h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-create-card label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-create-card select,
+.form-create-card button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.form-create-card button {
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-create-card button:hover {
+  background-color: #45a049;
+}
+
+

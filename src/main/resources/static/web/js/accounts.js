@@ -9,8 +9,9 @@ const app = createApp ({
             firstName:"",
             lastName:"",
             cardImage:[
-                "../assets/images/cardOne (2).png",
-                "../assets/images/cardTwo (2).png"
+                "../assets/images/firstAccount.png",
+                "../assets/images/secondAccount.png",
+                "../assets/images/thirdAccount.png",
             ],
             loans:[],
             payments:[],
@@ -47,6 +48,14 @@ const app = createApp ({
                     return window.location.href = "/web/pages/index.html";
                 })
                 .catch(error => console.log(error));
+        },
+
+        createAccount(){
+            axios.post(`/api/clients/current/accounts`)
+            .then(response => {
+                this.loadData();
+            })
+            .catch(error=> console.log(error));
         }
 
 
