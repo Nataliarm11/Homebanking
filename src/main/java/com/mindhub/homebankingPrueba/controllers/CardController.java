@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.Random;
-import java.util.Set;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RequestMapping("/api")
@@ -29,7 +26,7 @@ public class CardController {
     @Autowired
     ClientRepository clientRepository;
 
-    //CVV
+    // CVV
     short minCvv = 123;
     short maxCvv = 989;
 
@@ -38,59 +35,54 @@ public class CardController {
     }
 
     public String generateCardNumber() {
-        String cardNumber = "";
-        Random random = new Random();
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                cardNumber += random.nextInt(10);
-            }
-            if (i < 3) {
-                cardNumber += "-";
-            }
-        }
+        String cardNumber;
+        boolean exists;
+
+        do {
+            cardNumber = generateRandomCardNumber();
+            exists = cardRepository.existsByNumber(cardNumber);
+        } while (exists);
+
         return cardNumber;
     }
 
-    @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
-    public ResponseEntity<Object> createCards( @RequestParam CardColor cardColor, @RequestParam CardType cardType, Authentication authentication ){
-        Client client = clientRepository.findByEmail(authentication.getName());
-        if (cardRepository.findByClientAndColorAndType(client, cardColor, cardType)!=null){
-            return new ResponseEntity<>("Excuse me, forbidden", HttpStatus.FORBIDDEN);
-       }
+    private String generateRandomCardNumber() {
+        Random random = new Random();
+        StringBuilder cardNumber = new StringBuilder();
 
-//        Set<Card> cards = client.getCards();
-//        List <Card> typeCards = cards.stream()
-//                .filter(card -> card.getType() == cardType)
-//                .collect(Collectors.toList());
-//        List<Card> typeColor=cards.stream()
-//                .filter(card ->card.getColor() == cardColor)
-//                .collect(Collectors.toList());
-//
-//        if(cards.size()>=6){
-//            return new ResponseEntity<>("Excuse me, you can't have more than six cards.",HttpStatus.FORBIDDEN);
-//        }
-//
-//        if(typeCards.size() == 3){
-//            return new ResponseEntity<>("Excuse me, you can not have three cards of the same type", HttpStatus.FORBIDDEN);
-//        }
-//
-//        if(typeColor.size() == 1){
-//            return new ResponseEntity<>("Excuse me, you can not have three cards of the same type", HttpStatus.FORBIDDEN);
-//        }
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                cardNumber.append(random.nextInt(10));
+            }
+            if (i < 3) {
+                cardNumber.append("-");
+            }
+        }
+
+        return cardNumber.toString();
+    }
+
+    @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
+    public ResponseEntity<Object> createCards(@RequestParam CardColor cardColor, @RequestParam CardType cardType, Authentication authentication) {
+        Client client = clientRepository.findByEmail(authentication.getName());
+
+        if (cardRepository.existsByClientAndColorAndType(client, cardColor, cardType)) {
+            return new ResponseEntity<>("Excuse me, prohibited action", HttpStatus.FORBIDDEN);
+        }
 
         String cardHolderClient = client.getFirstName() + " " + client.getLastName();
+
         String cardNumber = generateCardNumber();
         short numberCvv = getRandomNumberCvv(minCvv, maxCvv);
         LocalDateTime fromDate = LocalDateTime.now();
         LocalDateTime thruDate = fromDate.plusYears(5);
 
-        Card cardNew = new Card(cardHolderClient, cardType, cardColor, cardNumber,numberCvv, thruDate, fromDate);
+        Card cardNew = new Card(cardHolderClient, cardType, cardColor, cardNumber, numberCvv, thruDate, fromDate);
         client.addCard(cardNew);
         cardRepository.save(cardNew);
 
-
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
 }
+
 

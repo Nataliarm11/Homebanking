@@ -59,7 +59,9 @@ public class AccountController {
 
         String newAccountNumber;
 
-        newAccountNumber = "VIN-" + getRandomNumberAccount(minAccount, maxAccount);
+        do {
+            newAccountNumber = "VIN-" + getRandomNumberAccount(minAccount, maxAccount);
+        } while (accountRepository.existsByNumber(newAccountNumber));
 
 
         Account accountNew = new Account(newAccountNumber, LocalDate.now(), 0);

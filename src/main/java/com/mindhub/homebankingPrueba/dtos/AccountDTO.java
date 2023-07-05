@@ -38,33 +38,19 @@ public class AccountDTO {
         return transactions;
     }
 
-    public void setTransactions(List<TransactionDTO> transactions) {
-        this.transactions = transactions;
-    }
-
     public String getNumber() {
         return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
     }
 
     public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
-    }
 
     public double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
 }
 
 

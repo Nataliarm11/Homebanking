@@ -15,22 +15,27 @@ const app = createApp({
 
     methods: {
         logIn() {
-            if (this.email && this.password) {
                 console.log(this.email);
                 console.log(this.password);
                 axios.post('/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' }})
                     .then(response => {
                         console.log("Welcome");
+                        Swal.fire({
+                            title: 'success',
+                            text: 'Welcome', // Muestra el mensaje de error específico
+                            icon: 'success'
+                          });
                         window.location.href = '/web/pages/accounts.html';
                     })
-                    .catch(error => console.log(error));
-            } else {
-                Swal.fire({
-                    title: "Error",
-                    text: "Verify that the email and password are filled out and correct.",
-                    icon: "error"
-                });
-            }
+                    .catch(error => {
+                        console.log(error);
+                        Swal.fire({
+                            title: "Error",
+                            text: error.message, // Muestra el mensaje de error específico
+                            icon: "error"
+                          });
+
+                    });
         },
         
 

@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  
+  header{
+    min-height: 10vh;
+    padding: 1rem;
+    background-color:  #008f39;
+  }
+  
+  main{
+    min-height: 80vh;
+  }
+  .welcome{
+    height: 10vh !important;
+  }
+  
+  footer{
+    min-height: 5vh;
+    padding: 1rem;
+    background-color:  #008f39;
+    
+  }
+  
+  nav {
+  background-color:  #008f39;
+  }
+  
+  
+  body {
+    position: relative;
+  }
+  
+  body::before {
+    content: "";
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+
+  /* OTROS */
+
+  #transferForm {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px  #008f39;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333333;
+    font-weight: bold;
+  }
+  
+  select,
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    transition: border-color 0.3s ease;
+  }
+  
+  select:focus,
+  input[type="number"]:focus,
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #4caf50;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+
+  body {
+    background-color: #F0F0F0; 
+  }
+  
+  .nav-link {
+    border: 1.5px solid #222121;
+    border-radius: 5px;
+    margin-right: 10px; 
+  }
+  
+  .desactive-page {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+    background-image: linear-gradient(to bottom, #28a745, #218838);
+  }
+  
+  .active-page {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+    background-image: linear-gradient(to bottom, #9cc7a6, #a4d5af);
+  }
+  
+  .log-out {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+    background-image: linear-gradient(to bottom, #e93535, #d42828);
+  }  

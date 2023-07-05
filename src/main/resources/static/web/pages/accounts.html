@@ -20,28 +20,30 @@
         <header>
             <nav class="container navbar navbar-expand-md navbar-text" data-bs-theme="dark">
               <div class="container-fluid justify-content-between">
-                  <a class="navbar-brand" href="#">
-                      <img class="logoHeader w-25" src="../assets/images/BankSinFondo.png" alt="logo">
-                  </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
-                      <div class="navbar-nav">
-                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/wallet.html">Wallet</a>
-                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/editProfile.html">Edit profile</a>
-                          <a class="nav-link active d-flex justify-content-center fw-bold bg-white rounded-1  text-black" href="#">Accounts</a>
-                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/cards.html">Cards</a>
-                      </div>
-                      <a class="btn btn-danger text-black fw-bold d-flex justify-content-center align-items-center" href="" @click.prevent="logOut">Sign Out</a>
+                <a class="navbar-brand" href="#">
+                  <img class="logoHeader w-25" src="../assets/images/BankSinFondo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/wallet.html">Wallet</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/editProfile.html">Edit profile</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center fw-bold text-white active-page" href="#">Accounts</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/cards.html">Cards</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/transfers.html">Make your transfer</a>
                   </div>
+                  <a class="btn btn-danger text-black fw-bold d-flex justify-content-center align-items-center log-out" href="" @click.prevent="logOut">Sign Out</a>
+                </div>
               </div>
             </nav>
           </header>
+          
       
           <main>
               <h4 class="text-center text-black py-4">
-                  <span class="text-black fw-bold p-2">  {{clients.firstName}} {{clients.lastName}}.</span>
+                <span class="text-success fw-bold">Welcome,</span> {{clients.firstName}} {{clients.lastName}}.
               </h4>
       
               <h5 class="px-5 py-2 text-black">
@@ -52,6 +54,26 @@
                 Accounts:
               </h5>
 
+              <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5 text-black">
+                <div class="card rounded border-success custom-card" style="width: 18rem;" v-for="(client, index) of accounts">
+                  <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
+                  <div class="card-body">
+                    <h5 class="card-title text-center"><span class="fw-bold text-black">Account number:</span><br>{{client.number}}</h5></h5>
+                  </div>
+                  <ul class="list-group list-group-flush ">
+                    <li class="list-group-item text-black"><span class="fw-bold text-black">Balance:</span>${{client.balance.toFixed(1)}}</li>
+                    <li class="list-group-item text-black"><span class="fw-bold text-black">Date of Creation:</span>{{client.creationDate}}</li>
+                  </ul>
+                  <div class="card-body text-center">
+                    <a class="btn btn-secondary text-black" v-bind:href="'./account.html?id=' + client.id" role="button">See my transactions</a>
+                  </div>
+                </div>
+                <div v-if="accounts.length === 0" class="d-flex justify-content-center pt-5 pb-5">
+                  <h3>You do not have accounts.</h3>
+                </div>
+              </div>
+              
+<!-- 
               <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5">
                 <div class="card-container" v-for=" (client, index) of accounts">
                     <div class="card">
@@ -75,17 +97,14 @@
                     <h3>You do not have accounts.</h3>
                   </div>
                   </div>
-              </div>
+              </div> -->
 
               <div class="d-flex justify-content-center p-5">
-                <button v-if="accounts.length<3" class="btn btn-secondary"  @click.prevent="createAccount">Create account</button>
+                <button v-if="accounts.length<3" class="btn btn-secondary text-black" @click.prevent="createAccount">Create account</button>
               </div>
 
-
-
-
               <h5 class="px-5 py-2 text-black fw-bolder">
-                Loans:
+                Loans: Expand to see your loans
               </h5>
 
               <div class="d-flex justify-content-center gap-5 flex-wrap">

@@ -76,33 +76,16 @@ public class CardDTO {
         return number;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
 
     public short getCvv() {
         return cvv;
     }
 
-    public void setCvv(short cvv) {
-        this.cvv = cvv;
-    }
 
     public LocalDateTime getThruDate() {
         return thruDate;
     }
 
-    public void setThruDate(LocalDateTime thruDate) {
-        this.thruDate = thruDate;
-    }
-
-    public LocalDateTime getFromDate() {
-        return fromDate;
-    }
-
-    public void setFromDate(LocalDateTime fromDate) {
-        this.fromDate = fromDate;
-    }
 
     @JsonIgnore
     public Client getClient() {

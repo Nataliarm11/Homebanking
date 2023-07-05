@@ -63,9 +63,6 @@ public class ClientDTO {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public List<AccountDTO> getAccounts() {
         return accounts;
@@ -79,9 +76,6 @@ public class ClientDTO {
         return loans;
     }
 
-    public void setLoans(List<ClientLoanDTO> loans) {
-        this.loans = loans;
-    }
 
     public List<CardDTO> getCards() {
         return cards;

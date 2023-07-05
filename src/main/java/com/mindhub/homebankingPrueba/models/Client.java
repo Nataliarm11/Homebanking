@@ -55,6 +55,8 @@ public class Client {
         this.accounts = accounts;
     }
 
+
+
     public String getFirstName(){
         return firstName;
     }

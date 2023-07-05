@@ -20,21 +20,22 @@
         <header>
             <nav class="container navbar navbar-expand-md navbar-text" data-bs-theme="dark">
               <div class="container-fluid justify-content-between">
-                  <a class="navbar-brand" href="#">
-                      <img class="logoHeader w-25" src="../assets/images/BankSinFondo.png" alt="logo">
-                  </a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
-                      <div class="navbar-nav">
-                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/wallet.html">Wallet</a>
-                          <a class="nav-link active d-flex justify-content-center fw-bold bg-white rounded-1 text-black" href="#">Edit profile</a>
-                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/accounts.html">Accounts</a>
-                          <a class="nav-link active d-flex justify-content-center text-black" href="../pages/cards.html">Cards</a>
-                      </div>
-                      <a class="btn btn-danger text-black fw-bold d-flex justify-content-center align-items-center" href="" @click.prevent="logOut">Sign Out</a>
+                <a class="navbar-brand" href="#">
+                  <img class="logoHeader w-25" src="../assets/images/BankSinFondo.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/wallet.html">Wallet</a>
+                    <a  class="nav-link btn btn-success d-flex justify-content-center fw-bold text-white active-page" href="#">Edit profile</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page"  href="../pages/accounts.html">Accounts</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/cards.html">Cards</a>
+                    <a class="nav-link btn btn-success d-flex justify-content-center text-black desactive-page" href="../pages/transfers.html">Make your transfer</a>
                   </div>
+                  <a class="btn btn-danger text-black fw-bold d-flex justify-content-center align-items-center log-out" href="" @click.prevent="logOut">Sign Out</a>
+                </div>
               </div>
             </nav>
           </header>

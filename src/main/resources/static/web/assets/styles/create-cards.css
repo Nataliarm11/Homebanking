@@ -4,6 +4,23 @@
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
   }
+
+  body {
+    position: relative;
+  }
+  
+  body::before {
+    content: "";
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
     
   header{
     min-height: 10vh;
@@ -151,5 +168,36 @@
 .form-create-card button:hover {
   background-color: #45a049;
 }
+
+body {
+  background-color: #F0F0F0; 
+}
+
+.nav-link {
+  border: 1.5px solid #222121;
+  border-radius: 5px;
+  margin-right: 10px; 
+}
+
+.desactive-page {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #28a745, #218838);
+}
+
+.active-page {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #9cc7a6, #a4d5af);
+}
+
+.log-out {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #e93535, #d42828);
+} 
 
 

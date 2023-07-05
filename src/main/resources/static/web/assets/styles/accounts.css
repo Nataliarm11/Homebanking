@@ -5,6 +5,23 @@
   font-family: 'Nunito', sans-serif;
 }
 
+body {
+  position: relative;
+}
+
+body::before {
+  content: "";
+  background-image: url(../images/fondoSiete.jpg);
+  background-position: left;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
 header{
   min-height: 10vh;
   padding: 1rem;
@@ -610,6 +627,95 @@ body {
 .card .content {
   pointer-events: auto;
 }
+
+/* CARDS ACCOUNTS */
+.custom-card {
+  border: none;
+  background-color: #fff;
+  box-shadow: 0px 2px 6px  #008f39;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+
+.custom-card:hover {
+  box-shadow: 0px 4px 10px ;
+}
+
+.custom-card .card-body {
+  padding: 1.5rem;
+}
+
+
+
+.custom-card .btn {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.custom-card .btn:hover {
+  background-color: green;
+  border-color: green;
+  color: #fff;
+}
+
+/* BOTN ACCOUNTS */
+.btn-secondary {
+  background-color: #6c757d; 
+  border-color: #6c757d; 
+  color: #fff; 
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #28a745, #218838);
+}
+
+
+body {
+  background-color: #F0F0F0; 
+}
+
+.nav-link {
+  border: 1.5px solid #222121;
+  border-radius: 5px;
+  margin-right: 10px; 
+}
+
+.desactive-page {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #28a745, #218838);
+}
+
+.active-page {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #9cc7a6, #a4d5af);
+}
+
+.log-out {
+  background-color: #28a745;
+  border-color: #28a745; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #e93535, #d42828);
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

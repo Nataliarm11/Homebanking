@@ -8,7 +8,7 @@
 header{
   min-height: 10vh;
   padding: 1rem;
-  background-color: green;
+  background-color: #008f39;
 }
 
 main{
@@ -21,12 +21,12 @@ main{
 footer{
   min-height: 5vh;
   padding: 1rem;
-  background-color: green;
+  background-color: #008f39;
   
 }
 
 nav {
-background-color: green;
+background-color: #008f39;
 }
 
 

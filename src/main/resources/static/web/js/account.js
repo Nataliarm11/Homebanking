@@ -37,10 +37,6 @@ const app = createApp ({
                  this.transactions=response.data.transactions;
                  console.log(this.transactions);
 
-
-    
-
-
              })
             .catch(error => console.log(error));
         },

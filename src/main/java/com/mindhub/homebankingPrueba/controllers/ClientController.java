@@ -60,9 +60,6 @@ public class ClientController {
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password){
 
-        if(firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-        }
         if (firstName.isBlank()) {
             return new ResponseEntity<>("the firstName is missing", HttpStatus.FORBIDDEN);
         }
@@ -82,15 +79,14 @@ public class ClientController {
 
         Client client =  clientRepository.save(new Client(firstName, lastName, email, passwordEncoder.encode(password)));
 
-        List<String> accountNumbersExisting = accountRepository.findAll()
-                .stream()
-                .map(Account::getNumber)
-                .collect(Collectors.toList());
+
         String newAccountNumber;
+        boolean accountNumberExists;
 
         do {
             newAccountNumber = "VIN-" + getRandomNumberAccount(minAccount, maxAccount);
-        } while (accountNumbersExisting.contains(newAccountNumber));
+            accountNumberExists = accountRepository.existsByNumber(newAccountNumber);
+        } while (accountNumberExists);
 
         Account accountNew = new Account(newAccountNumber, LocalDate.now(), 0);
 
@@ -105,9 +101,5 @@ public class ClientController {
         return new ClientDTO(clientRepository.findByEmail(authentication.getName()));
 
     }
-
-
-
-
 
 }
