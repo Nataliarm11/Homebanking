@@ -22,7 +22,7 @@ const app = createApp({
                         console.log("Welcome");
                         Swal.fire({
                             title: 'success',
-                            text: 'Welcome', // Muestra el mensaje de error específico
+                            text: 'Welcome',
                             icon: 'success'
                           });
                         window.location.href = '/web/pages/accounts.html';
@@ -31,7 +31,7 @@ const app = createApp({
                         console.log(error);
                         Swal.fire({
                             title: "Error",
-                            text: error.message, // Muestra el mensaje de error específico
+                            text: error.message, 
                             icon: "error"
                           });
 

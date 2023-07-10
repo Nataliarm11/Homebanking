@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  body {
+    position: relative;
+  }
+  
+  body::before {
+    content: "";
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+  
+  header{
+    min-height: 10vh;
+    padding: 1rem;
+    /* background-color: green; */
+    background-color: #008f39;
+  }
+  
+  main{
+    min-height: 80vh;
+  }
+  
+  .welcome{
+    height: 10vh !important;
+  }
+  
+  footer{
+    min-height: 5vh;
+    padding: 1rem;
+    /* background-color: green; */
+    background-color: #008f39;
+  }
+  
+  nav {
+  /* background-color: green; */
+  background-color: #008f39;
+  }
+  
+  body {
+    position: relative;
+    background-color: white;
+  }
+  
+  /* body::before {
+    content: "";
+    background-image: url(../images/fondoSiete.jpg);
+    background-position: left;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  } */
+  
+  .divNav{
+    /* background-color: green; */
+    background-color: #008f39;
+    
+  }
+
+
+  body {
+    background-color: #F0F0F0; 
+  }
+  
+  .nav-link {
+    border: 1.5px solid #222121;
+    border-radius: 5px;
+    margin-right: 10px; 
+  }
+  
+  .desactive-page {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+    background-image: linear-gradient(to bottom, #28a745, #218838);
+  }
+  
+  .active-page {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+    background-image: linear-gradient(to bottom, #9cc7a6, #a4d5af);
+  }
+  
+  .log-out {
+    background-color: #28a745;
+    border-color: #28a745; 
+    color: #fff;
+    background-image: linear-gradient(to bottom, #e93535, #d42828);
+  }
+
+  /* Loans form */
+  
+  
+  #loanForm {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  #loanForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  #loanForm select,
+  #loanForm input[type="number"],
+  #loanForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  #loanForm select {
+    background-color: #fff;
+  }
+  
+  #loanForm input[type="number"],
+  #loanForm input[type="text"] {
+    background-color: #f5f5f5;
+  }
+  
+  #loanForm button {
+    background-color: #32a852;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #loanForm button:hover {
+    background-color: #2b8d49;
+  }
+  
+  #loanForm .form-group {
+    margin-bottom: 20px;
+  }
+  
+  #loanForm .form-group:last-child {
+    margin-bottom: 0;
+  }
+  
+  #loanForm .form-group label {
+    font-size: 14px;
+  }
+  
+  #loanForm .form-group input[type="number"],
+  #loanForm .form-group input[type="text"],
+  #loanForm .form-group select {
+    font-size: 14px;
+  }
+  
+  #loanForm .form-group select {
+    height: 36px;
+  }
+  
+  #loanForm .form-group input[type="number"],
+  #loanForm .form-group input[type="text"] {
+    height: 36px;
+  }
+  

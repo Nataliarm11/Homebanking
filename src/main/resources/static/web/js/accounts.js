@@ -15,12 +15,18 @@ const app = createApp ({
             ],
             loans:[],
             payments:[],
+            paymentMonthly:null,
+            loan: {
+                amount: null,
+                payments: null,
+              }
         }
     },
 
 
     created (){
         this.loadData();
+        this.monthly();
 
     },
 
@@ -41,6 +47,10 @@ const app = createApp ({
             })
             .catch(error => console.log(error));
         },
+
+        monthly(amount, payments) {
+            return (amount / payments).toFixed(2);
+          },
 
         logOut() {
             axios.post(`/api/logout`)

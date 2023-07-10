@@ -27,12 +27,13 @@ const app = createApp({
                     this.clients = response.data;
                     this.accounts = this.clients.accounts;
                     this.accounts.sort((a, b) => a.id - b.id);
+                    console.log(this.accounts)
                 })
                 .catch(error => console.log(error));
         },
 
         createTransaction() {
-            if (confirm('¿Estás seguro de realizar la transferencia?')) {
+            if (confirm('Are you sure to make the transfer?')) {
                 this.newTransaction(this.amount, this.description, this.originNumber, this.destinationNumber);
             }
         },
@@ -46,15 +47,16 @@ const app = createApp({
 
             })
               .then(response => {
-                // Maneja la respuesta si es necesario
-                alert('La transferencia se realizó correctamente.');
-                location.reload();
+                
+                alert('The transfer was successful.');
+                return (window.location.href = '/web/pages/accounts.html');
+                
               })
               .catch(error => {
                 console.log(error);
                 Swal.fire({
                     title: "Error",
-                    text: error.response.data, // Muestra el mensaje de error específico
+                    text: error.response.data, 
                     icon: "error"
                   });
               });

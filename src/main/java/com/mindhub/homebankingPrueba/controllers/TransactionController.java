@@ -8,6 +8,9 @@ import com.mindhub.homebankingPrueba.models.TransactionType;
 import com.mindhub.homebankingPrueba.repositories.AccountRepository;
 import com.mindhub.homebankingPrueba.repositories.ClientRepository;
 import com.mindhub.homebankingPrueba.repositories.TransactionRepository;
+import com.mindhub.homebankingPrueba.services.AccountService;
+import com.mindhub.homebankingPrueba.services.ClientService;
+import com.mindhub.homebankingPrueba.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +25,17 @@ import java.util.Set;
 @RequestMapping("/api")
 public class TransactionController {
 
+
     @Autowired
-    TransactionRepository transactionRepository;
+    TransactionService transactionService;
+
+
     @Autowired
-    ClientRepository clientRepository;
+    ClientService clientService;
+
+
     @Autowired
-    AccountRepository accountRepository;
+    AccountService accountService;
 
     @Transactional
     @RequestMapping(path = "/transactions",method = RequestMethod.POST)
@@ -37,9 +45,9 @@ public class TransactionController {
             return new ResponseEntity<>("Unauthorized", HttpStatus.UNAUTHORIZED);
         }
 
-        Client client = clientRepository.findByEmail(authentication.getName());
-        Account destinationAccount = accountRepository.findByNumber(transactionRequest.getDestinationNumber());
-        Account originAccount = accountRepository.findByNumber(transactionRequest.getOriginNumber());
+        Client client = clientService.findByEmail(authentication.getName());
+        Account destinationAccount = accountService.findByNumber(transactionRequest.getDestinationNumber());
+        Account originAccount = accountService.findByNumber(transactionRequest.getOriginNumber());
 
         // Verificar que los parámetros no estén vacíos
         if (transactionRequest.getAmount() == 0) {
@@ -95,16 +103,18 @@ public class TransactionController {
         destinationAccount.addTransaction(transactionCredit);
 
         // Guardar las transacciones en el repositorio de transacciones
-        transactionRepository.save(transactionDebit);
-        transactionRepository.save(transactionCredit);
+        transactionService.saveTransaction(transactionDebit);
+        transactionService.saveTransaction(transactionCredit);
+
 
         // Actualizar los saldos de las cuentas
         originAccount.setBalance(originAccount.getBalance() - transactionRequest.getAmount());
         destinationAccount.setBalance(destinationAccount.getBalance() + transactionRequest.getAmount());
 
         // Guardar las cuentas actualizadas en el repositorio de cuentas
-        accountRepository.save(originAccount);
-        accountRepository.save(destinationAccount);
+        accountService.saveAccount(originAccount);
+        accountService.saveAccount(destinationAccount);
+
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
