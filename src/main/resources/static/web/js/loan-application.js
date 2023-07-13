@@ -66,7 +66,7 @@ const app = createApp({
             })
             .then(response => {
                 alert('The transfer was successful.');
-                location.reload();
+                window.location.href = '/web/pages/accounts.html'
             })
             .catch(error => {
               Swal.fire({

@@ -2,476 +2,292 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
-}
-
-body {
-  position: relative;
-}
-
-body::before {
-  content: "";
-  background-image: url(../images/fondoSiete.jpg);
-  background-position: left;
-  opacity: 0.4;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
 }
 
 header{
-  min-height: 10vh;
-  padding: 1rem;
-  /* background-color: green; */
-  background-color: #008f39;
+min-height: 10vh;
+background: linear-gradient(to right, #e7c2c2, purple);
 }
 
 main{
-  min-height: 80vh;
-}
-
-.welcome{
-  height: 10vh !important;
+min-height: 80vh;
+background-color: whitesmoke;
 }
 
 footer{
-  min-height: 5vh;
-  padding: 1rem;
-  /* background-color: green; */
-  background-color: #008f39;
+min-height: 5vh;
+padding: 1rem;
 }
 
-nav {
-/* background-color: green; */
-background-color: #008f39;
-}
-
-body {
-  position: relative;
+/* BOTONES HEADER */
+.purple-button {
   background-color: white;
+  color: purple;
+  border: 2px solid purple;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-left: 10px;
 }
 
-/* body::before {
-  content: "";
-  background-image: url(../images/fondoSiete.jpg);
-  background-position: left;
-  opacity: 0.4;
-  position: absolute;
-  top: 0;
-  left: 0;
+.purple-button-one {
+  background: linear-gradient(to bottom right, purple, #8b00ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-left: 10px;
+}
+
+.purple-button-two {
+  background: linear-gradient(to bottom right, rgb(235, 190, 235), #a58af0);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-left: 10px;
+}
+
+
+
+/* REDES */
+.social {
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.social .social-item {
+  margin: 0 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social .social-item .social-link {
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: -1;
-} */
-
-.divNav{
-  /* background-color: green; */
-  background-color: #008f39;
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  text-align: center;
+  transform: perspective(1000px) rotate(-30deg) skew(25deg)
+    translate(0, 0);
+  transition: all 0.4s ease;
 }
 
-/* loader */
-.loader {
-  position: relative;
-  width: 75px;
-  height: 100px;
-}
-
-.loader__bar {
+.social .social-item .social-link::before {
+  content: "";
   position: absolute;
-  bottom: 0;
+  top: 5px;
+  left: -10px;
+  height: 100%;
   width: 10px;
-  height: 50%;
-  background: rgb(0, 0, 0);
-  transform-origin: center bottom;
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background: #b1b1b1;
+  transition: all 0.4s ease;
+  transform: rotate(0deg) skewY(-45deg);
 }
 
-.loader__bar:nth-child(1) {
-  left: 0px;
-  transform: scale(1, 0.2);
-  -webkit-animation: barUp1 4s infinite;
-  animation: barUp1 4s infinite;
-}
-
-.loader__bar:nth-child(2) {
-  left: 15px;
-  transform: scale(1, 0.4);
-  -webkit-animation: barUp2 4s infinite;
-  animation: barUp2 4s infinite;
-}
-
-.loader__bar:nth-child(3) {
-  left: 30px;
-  transform: scale(1, 0.6);
-  -webkit-animation: barUp3 4s infinite;
-  animation: barUp3 4s infinite;
-}
-
-.loader__bar:nth-child(4) {
-  left: 45px;
-  transform: scale(1, 0.8);
-  -webkit-animation: barUp4 4s infinite;
-  animation: barUp4 4s infinite;
-}
-
-.loader__bar:nth-child(5) {
-  left: 60px;
-  transform: scale(1, 1);
-  -webkit-animation: barUp5 4s infinite;
-  animation: barUp5 4s infinite;
-}
-
-.loader__ball {
+.social .social-item .social-link::after {
+  content: "";
   position: absolute;
-  bottom: 10px;
-  left: 0;
-  width: 10px;
+  top: 40px;
+  left: -5px;
   height: 10px;
-  /* background: green; */
-  background: #008f39;
-  border-radius: 50%;
-  -webkit-animation: ball624 4s infinite;
-  animation: ball624 4s infinite;
+  width: 100%;
+  background: #b1b1b1;
+  transition: all 0.4s ease;
+  transform: rotate(0deg) skewX(-45deg);
 }
 
-@keyframes ball624 {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  5% {
-    transform: translate(8px, -14px);
-  }
-
-  10% {
-    transform: translate(15px, -10px);
-  }
-
-  17% {
-    transform: translate(23px, -24px);
-  }
-
-  20% {
-    transform: translate(30px, -20px);
-  }
-
-  27% {
-    transform: translate(38px, -34px);
-  }
-
-  30% {
-    transform: translate(45px, -30px);
-  }
-
-  37% {
-    transform: translate(53px, -44px);
-  }
-
-  40% {
-    transform: translate(60px, -40px);
-  }
-
-  50% {
-    transform: translate(60px, 0);
-  }
-
-  57% {
-    transform: translate(53px, -14px);
-  }
-
-  60% {
-    transform: translate(45px, -10px);
-  }
-
-  67% {
-    transform: translate(37px, -24px);
-  }
-
-  70% {
-    transform: translate(30px, -20px);
-  }
-
-  77% {
-    transform: translate(22px, -34px);
-  }
-
-  80% {
-    transform: translate(15px, -30px);
-  }
-
-  87% {
-    transform: translate(7px, -44px);
-  }
-
-  90% {
-    transform: translate(0, -40px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
+.social .social-item .social-link:hover {
+  transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(5px, -5px);
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.5);
 }
 
-@-webkit-keyframes barUp1 {
-  0% {
-    transform: scale(1, 0.2);
-  }
-
-  40% {
-    transform: scale(1, 0.2);
-  }
-
-  50% {
-    transform: scale(1, 1);
-  }
-
-  90% {
-    transform: scale(1, 1);
-  }
-
-  100% {
-    transform: scale(1, 0.2);
-  }
+.social .social-item:nth-child(1) a {
+  color: #3b5999;
 }
 
-@keyframes barUp1 {
-  0% {
-    transform: scale(1, 0.2);
-  }
-
-  40% {
-    transform: scale(1, 0.2);
-  }
-
-  50% {
-    transform: scale(1, 1);
-  }
-
-  90% {
-    transform: scale(1, 1);
-  }
-
-  100% {
-    transform: scale(1, 0.2);
-  }
+.social .social-item:nth-child(1):hover a {
+  background: #3b5999;
 }
 
-@-webkit-keyframes barUp2 {
-  0% {
-    transform: scale(1, 0.4);
-  }
-
-  40% {
-    transform: scale(1, 0.4);
-  }
-
-  50% {
-    transform: scale(1, 0.8);
-  }
-
-  90% {
-    transform: scale(1, 0.8);
-  }
-
-  100% {
-    transform: scale(1, 0.4);
-  }
+.social .social-item:nth-child(1):hover a::before {
+  background: #3b5999;
 }
 
-@keyframes barUp2 {
-  0% {
-    transform: scale(1, 0.4);
-  }
-
-  40% {
-    transform: scale(1, 0.4);
-  }
-
-  50% {
-    transform: scale(1, 0.8);
-  }
-
-  90% {
-    transform: scale(1, 0.8);
-  }
-
-  100% {
-    transform: scale(1, 0.4);
-  }
+.social .social-item:nth-child(1):hover a::after {
+  background: #3b5999;
 }
 
-@-webkit-keyframes barUp3 {
-  0% {
-    transform: scale(1, 0.6);
-  }
-
-  100% {
-    transform: scale(1, 0.6);
-  }
+.social .social-item:nth-child(2) a {
+  color: #55acee;
 }
 
-@keyframes barUp3 {
-  0% {
-    transform: scale(1, 0.6);
-  }
-
-  100% {
-    transform: scale(1, 0.6);
-  }
+.social .social-item:nth-child(2):hover a {
+  background: #55acee;
 }
 
-@-webkit-keyframes barUp4 {
-  0% {
-    transform: scale(1, 0.8);
-  }
-
-  40% {
-    transform: scale(1, 0.8);
-  }
-
-  50% {
-    transform: scale(1, 0.4);
-  }
-
-  90% {
-    transform: scale(1, 0.4);
-  }
-
-  100% {
-    transform: scale(1, 0.8);
-  }
+.social .social-item:nth-child(2):hover a::before {
+  background: #55acee;
 }
 
-@keyframes barUp4 {
-  0% {
-    transform: scale(1, 0.8);
-  }
-
-  40% {
-    transform: scale(1, 0.8);
-  }
-
-  50% {
-    transform: scale(1, 0.4);
-  }
-
-  90% {
-    transform: scale(1, 0.4);
-  }
-
-  100% {
-    transform: scale(1, 0.8);
-  }
+.social .social-item:nth-child(2):hover a::after {
+  background: #55acee;
 }
 
-@-webkit-keyframes barUp5 {
-  0% {
-    transform: scale(1, 1);
-  }
-
-  40% {
-    transform: scale(1, 1);
-  }
-
-  50% {
-    transform: scale(1, 0.2);
-  }
-
-  90% {
-    transform: scale(1, 0.2);
-  }
-
-  100% {
-    transform: scale(1, 1);
-  }
+.social .social-item:nth-child(3) a {
+  color: #dd4b39;
 }
 
-@keyframes barUp5 {
-  0% {
-    transform: scale(1, 1);
-  }
-
-  40% {
-    transform: scale(1, 1);
-  }
-
-  50% {
-    transform: scale(1, 0.2);
-  }
-
-  90% {
-    transform: scale(1, 0.2);
-  }
-
-  100% {
-    transform: scale(1, 1);
-  }
+.social .social-item:nth-child(3):hover a {
+  background: #dd4b39;
 }
 
-/* 320 HEADER */
-
-@media (max-width: 320px) {
-  .navbar-brand {
-    flex-basis: 100%;
-    text-align: center;
-  }
-  .navbar-brand img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .navbar-toggler {
-    flex-basis: 100%;
-    text-align: center;
-  }
-  .navbar-nav {
-    flex-basis: 100%;
-    justify-content: center;
-  }
-  .nav-link {
-    margin-right: 10px;
-  }
+.social .social-item:nth-child(3):hover a::before {
+  background: #dd4b39;
 }
 
-@media (max-width: 767px) {
-  .navbar-nav {
-    flex-direction: column;
-  }
-  .nav-link {
-    margin-bottom: 10px;
-  }
+.social .social-item:nth-child(3):hover a::after {
+  background: #dd4b39;
 }
 
-/* 320 FOOTER */
-@media (max-width: 320px) {
-  header{
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .footer {
-    flex-direction: column;
-    text-align: center;
-    padding: 10px;
-  }
-
-  .footer div {
-    margin-bottom: 10px;
-  }
-
-  .logoFooter {
-    width: auto;
-    max-height: 250px;
-  }
-  
+.social .social-item:nth-child(4) a {
+  color: #e4405f;
 }
 
-/* Tarjeta accounts */
+.social .social-item:nth-child(4):hover a {
+  background: #e4405f;
+}
+
+.social .social-item:nth-child(4):hover a::before {
+  background: #e4405f;
+}
+
+.social .social-item:nth-child(4):hover a::after {
+  background: #e4405f;
+}
+
+.social .social-item .social-link:hover {
+  color: #ffffff;
+}
+
+/* FOOTER */
+
+.footer {
+background: linear-gradient(to right, #e7c2c2, purple);
+color: #fff;
+padding: 20px;
+}
+
+.footer-content {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.social {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex;
+}
+
+.social-item {
+margin-right: 10px;
+}
+
+.social-link {
+color: #fff;
+text-decoration: none;
+}
+
+.social-link svg {
+width: 24px;
+height: 24px;
+}
+
+/* Cuentas */
+
+.card {
+--font-color: #323232;
+--bg-color: #ffffff;
+width: 250px;
+height: 350px;
+border-radius: 20px;
+background: var(--bg-color);
+box-shadow: -9px 9px 18px #3b5999,
+            9px -9px 18px #3b5999;
+display: flex;
+flex-direction: column;
+transition: .4s;
+position: relative;
+}
+
+.card:hover {
+transform: scale(1.02);
+box-shadow: 0px 0px 10px 2px #5a5a5a;
+}
+
+.card__img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+border-radius: 20px 20px 0 0;
+background-color: blueviolet;
+}
+
+.card__descr-wrapper {
+padding: 15px;
+display: grid;
+}
+
+.card__title {
+color: var(--font-color);
+text-align: center;
+margin-bottom: 15px;
+font-weight: 900;
+font-size: 16px;
+}
+
+.card__descr {
+color: var(--font-color);
+}
+
+.svg {
+width: 25px;
+height: 25px;
+transform: translateY(25%);
+fill: var(--font-color);
+}
+
+.card__links {
+margin-top: 10px;
+display: flex;
+justify-content: space-between;
+align-self: flex-end;
+}
+
+.card__links .link {
+color: var(--font-color);
+font-weight: 600;
+font-size: 15px;
+text-decoration: none;
+}
+
+.card__links .link:hover {
+text-decoration: underline;
+}
+
+/* Tarjeta loans */
 
 .cardLoan {
   width: 190px;
@@ -546,166 +362,6 @@ body {
   border-bottom: 1px solid #008f39;
 }
 
-
-
-
-
-/* carta */
-
-.card-container {
-  width: 300px;
-  height: 300px;
-  position: relative;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-}
-
-.card {
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-}
-
-.card .front-content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
-}
-
-.card .front-content p {
-  font-size: 32px;
-  font-weight: 700;
-  opacity: 1;
-  background: linear-gradient(-45deg, #03d356 0%, #18ac53 100% );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1)
-}
-
-.card .content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  background: linear-gradient(-45deg, #03d356 0%, #18ac53 100% );
-  color: #e8e8e8;
-  padding: 20px;
-  line-height: 1.5;
-  border-radius: 5px;
-  pointer-events: none;
-  transform: translateY(96%);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-.card .content .heading {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.card:hover .content {
-  transform: translateY(0);
-}
-
-.card:hover .front-content {
-  transform: translateY(-30%);
-}
-
-.card:hover .front-content p {
-  opacity: 0;
-}
-
-.card .content {
-  pointer-events: auto;
-}
-
-/* CARDS ACCOUNTS */
-.custom-card {
-  border: none;
-  background-color: #fff;
-  box-shadow: 0px 2px 6px  #008f39;
-  overflow: hidden;
-  transition: box-shadow 0.3s;
-}
-
-.custom-card:hover {
-  box-shadow: 0px 4px 10px ;
-}
-
-.custom-card .card-body {
-  padding: 1.5rem;
-}
-
-
-
-.custom-card .btn {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  color: #fff;
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.custom-card .btn:hover {
-  background-color: green;
-  border-color: green;
-  color: #fff;
-}
-
-/* BOTN ACCOUNTS */
-.btn-secondary {
-  background-color: #6c757d; 
-  border-color: #6c757d; 
-  color: #fff; 
-  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.btn-secondary:hover {
-  background-color: #28a745;
-  border-color: #28a745; 
-  color: #fff;
-  background-image: linear-gradient(to bottom, #28a745, #218838);
-}
-
-
-body {
-  background-color: #F0F0F0; 
-}
-
-.nav-link {
-  border: 1.5px solid #222121;
-  border-radius: 5px;
-  margin-right: 10px; 
-}
-
-.desactive-page {
-  background-color: #28a745;
-  border-color: #28a745; 
-  color: #fff;
-  background-image: linear-gradient(to bottom, #28a745, #218838);
-}
-
-.active-page {
-  background-color: #28a745;
-  border-color: #28a745; 
-  color: #fff;
-  background-image: linear-gradient(to bottom, #9cc7a6, #a4d5af);
-}
-
-.log-out {
-  background-color: #28a745;
-  border-color: #28a745; 
-  color: #fff;
-  background-image: linear-gradient(to bottom, #e93535, #d42828);
-}
 
 
 

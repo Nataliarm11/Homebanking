@@ -9,9 +9,9 @@ const app = createApp ({
             firstName:"",
             lastName:"",
             cardImage:[
-                "../assets/images/firstAccount.png",
-                "../assets/images/secondAccount.png",
-                "../assets/images/thirdAccount.png",
+                "../assets/images/accountOne.png",
+                "../assets/images/accountTwo.png",
+                "../assets/images/accountThree.png",
             ],
             loans:[],
             payments:[],
