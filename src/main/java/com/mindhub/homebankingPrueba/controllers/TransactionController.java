@@ -38,7 +38,7 @@ public class TransactionController {
     AccountService accountService;
 
     @Transactional
-    @RequestMapping(path = "/transactions",method = RequestMethod.POST)
+    @PostMapping("/transactions")
     public ResponseEntity<Object> createTransaction(Authentication authentication, @RequestBody TransactionNewDTO transactionRequest) {
 
         if (authentication == null || !authentication.isAuthenticated()) {

@@ -6,29 +6,28 @@
 
 header{
 min-height: 10vh;
-padding: 1rem;
+background: linear-gradient(to right, #e7c2c2, purple);
 }
 
 main{
 min-height: 80vh;
-background-color: #55acee;
-
+background-color: whitesmoke;
 }
-
 
 footer{
 min-height: 5vh;
 padding: 1rem;
 }
 
-
 /* BOTONES HEADER */
+
 .log-out {
   background-color:purple;
   border-color: purple; 
   color: #fff;
   background-image: linear-gradient(to bottom, #e93535, #d42828);
 }
+
 .purple-button {
   background-color: white;
   color: purple;
@@ -40,6 +39,15 @@ padding: 1rem;
 
 .purple-button-one {
   background: linear-gradient(to bottom right, purple, #8b00ff);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 16px;
+  margin-left: 10px;
+}
+
+.purple-button-two {
+  background: linear-gradient(to bottom right, rgb(235, 190, 235), #a58af0);
   color: white;
   border: none;
   border-radius: 10px;
@@ -226,7 +234,7 @@ height: 24px;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f2f2f2;
+    background-color:  rgba(112, 117, 123, 0.45);
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }

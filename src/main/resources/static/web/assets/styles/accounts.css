@@ -362,6 +362,12 @@ text-decoration: underline;
   border-bottom: 1px solid #008f39;
 }
 
+.log-out {
+  background-color:purple;
+  border-color: purple; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #e93535, #d42828);
+}
 
 
 

@@ -38,14 +38,14 @@ public class LoanController {
     private ClientLoanRepository clientLoanRepository;
 
 
-    @RequestMapping("/loans")
+    @GetMapping("/loans")
     public List <LoanDTO> getLoanDTO () {
         return loanService.getLoansDTO();
     }
 
 
     @Transactional
-    @RequestMapping(path = "/loans",method = RequestMethod.POST)
+    @PostMapping("/loans")
     public ResponseEntity<Object> createLoan(Authentication authentication, @RequestBody LoanApplicationDTO loanRequest){
         Client client = clientService.findByEmail(authentication.getName());
         if (loanRequest.getAmount() == null || loanRequest.getPayment()==  null ||loanRequest.getLoanId() == null ||loanRequest.getDestinationAccountNumber()== null) {

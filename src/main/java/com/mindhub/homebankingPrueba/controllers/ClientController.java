@@ -34,12 +34,12 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    @RequestMapping("/clients")
+    @GetMapping("/clients")
     public Set<ClientDTO> getClientsDTO(){
         return clientService.getClientsDTO();
     }
 
-    @RequestMapping("clients/{id}")
+    @GetMapping("clients/{id}")
     public ClientDTO getClientDTO(@PathVariable Long id){
         return clientService.getClientDTO(id);
 
@@ -52,7 +52,7 @@ public class ClientController {
         return (int) ((Math.random() * (maxAccount - minAccount)) + minAccount);
     }
 
-    @RequestMapping(path = "/clients", method = RequestMethod.POST)
+    @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password){
