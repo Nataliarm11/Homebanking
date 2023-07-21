@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Card {
@@ -24,9 +24,12 @@ public class Card {
 
     private short cvv;
 
-    private LocalDateTime thruDate;
+    private LocalDate thruDate;
 
-    private LocalDateTime fromDate;
+    private LocalDate fromDate;
+
+    private boolean activeCard = true;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="client_id ")
     private Client client;
@@ -34,7 +37,7 @@ public class Card {
     public Card() {
     }
 
-    public Card(String cardHolder, CardType type, CardColor color, String number, short cvv, LocalDateTime thruDate, LocalDateTime fromDate) {
+    public Card(String cardHolder, CardType type, CardColor color, String number, short cvv, LocalDate thruDate, LocalDate fromDate, boolean activeCard) {
         this.cardHolder = cardHolder;
         this.type = type;
         this.color = color;
@@ -42,6 +45,7 @@ public class Card {
         this.cvv = cvv;
         this.thruDate = thruDate;
         this.fromDate = fromDate;
+        this.activeCard = activeCard;
     }
 
     public long getId() {
@@ -88,19 +92,19 @@ public class Card {
         this.cvv = cvv;
     }
 
-    public LocalDateTime getThruDate() {
+    public LocalDate getThruDate() {
         return thruDate;
     }
 
-    public void setThruDate(LocalDateTime thruDate) {
+    public void setThruDate(LocalDate thruDate) {
         this.thruDate = thruDate;
     }
 
-    public LocalDateTime getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDateTime fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
@@ -111,6 +115,14 @@ public class Card {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public boolean getActiveCard() {
+        return activeCard;
+    }
+
+    public void setActiveCard(boolean activeCard) {
+        this.activeCard = activeCard;
     }
 
     @Override

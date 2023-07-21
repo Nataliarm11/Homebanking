@@ -16,6 +16,9 @@ public class ClientLoan {
 
     private int payments;
 
+    private int remainingPayments;
+    private double remainingAmount;
+
     @ManyToOne
     @JoinColumn(name="client_id")
     private Client client;
@@ -27,10 +30,11 @@ public class ClientLoan {
     public ClientLoan() {
     }
 
-    public ClientLoan(double amount, int payments) {
+    public ClientLoan(double amount, int payments, int remainingPayments, double remainingAmount) {
         this.amount = amount;
         this.payments = payments;
-
+        this.remainingPayments = remainingPayments;
+        this.remainingAmount = remainingAmount;
     }
 
     public long getId() {
@@ -52,6 +56,22 @@ public class ClientLoan {
 
     public void setPayments(int payments) {
         this.payments = payments;
+    }
+
+    public int getRemainingPayments() {
+        return remainingPayments;
+    }
+
+    public void setRemainingPayments(int remainingPayments) {
+        this.remainingPayments = remainingPayments;
+    }
+
+    public double getRemainingAmount() {
+        return remainingAmount;
+    }
+
+    public void setRemainingAmount(double remainingAmount) {
+        this.remainingAmount = remainingAmount;
     }
 
     public Client getClient() {

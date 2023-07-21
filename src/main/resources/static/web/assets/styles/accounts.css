@@ -220,8 +220,8 @@ height: 24px;
 .card {
 --font-color: #323232;
 --bg-color: #ffffff;
-width: 250px;
-height: 350px;
+width: 310px;
+height: 450px;
 border-radius: 20px;
 background: var(--bg-color);
 box-shadow: -9px 9px 18px #3b5999,
@@ -290,7 +290,7 @@ text-decoration: underline;
 /* Tarjeta loans */
 
 .cardLoan {
-  width: 190px;
+  width: 300px;
   height: 120px;
   transition: all .5s;
   box-shadow: 15px 15px 30px rgba(25, 25, 25, 0.11),
@@ -300,8 +300,8 @@ text-decoration: underline;
 }
 
 .cardLoan:hover {
-  height: 254px;
-  background: linear-gradient(360deg, #edededc5 60%, hsla(0, 0%, 13%, 1) 70%);
+  height: 500px;
+  background: linear-gradient(360deg, #edededc5 60%, rgba(33, 33, 33, 0.44) 70%);
 }
 
 .cardLoan .headerLoan {
@@ -368,6 +368,8 @@ text-decoration: underline;
   color: #fff;
   background-image: linear-gradient(to bottom, #e93535, #d42828);
 }
+
+
 
 
 

@@ -10,26 +10,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&display=swap" rel="stylesheet">
-    <title>NOVOBANK</title>
+    <title>HOME | NOVOBANK</title>
 </head>
 
 <body>
     <div id="app">
         
         <header >
-            <div class="container-fluid d-flex align-items-center justify-content-between">
-                <a class="navbar-brand" href="#">
-                  <img src="../assets/images/novoBank.png" alt="Logo" width="220" height="80" class="d-inline-block align-text-top">
-                </a>
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                      <a class="nav-link active purple-button" id="registerBtn" aria-current="page" href="../pages/sign.html">Sign in</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link purple-button" href="../pages/register.html" id="signInBtn">Register</a>
-                    </li>
-                </ul>
+          <nav class="containerHeader navbar navbar-expand-md navbar-text" data-bs-theme="dark">
+            <div class="container-fluid justify-content-between">
+              <a class="navbar-brand" href="#">
+                <img src="../assets/images/novoBank.png" alt="Logo" width="220" height="80" class="d-inline-block align-text-top">
+              </a>
+              <button class="navbar-toggler bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link active purple-button text-black text-center" id="registerBtn" aria-current="page" href="../pages/sign.html">Sign in</a>
+                  <a class="nav-link purple-button text-black text-center" href="../pages/register.html" id="signInBtn">Register</a>
+                </div>
               </div>
+            </div>
+          </nav>
         </header>
     
         <main>
@@ -37,7 +40,7 @@
                 <img src="../assets/images/BANNER.png" alt="banner" class="img-fluid w-100" style="max-height: 450px;">
             </div>
 
-            <div class="d-flex justify-content-evenly p-5">
+            <div class="d-flex justify-content-evenly p-5 flex-wrap gap-3">
                 <article class="card">
                     <div class="temporary_text">
                         <img src="../assets/images/cardUno.png" alt="card" class="card_image">
@@ -89,7 +92,7 @@
 
 
 
-            <div class="banner pb-5">
+            <div class="banner pb-5" >
                 <img src="../assets/images/bannerDos.png" alt="" class="img-fluid w-100" style="max-height: 450px">
                 <div class="content">
                     <p class="paragraph">We solve your questions so you can use NovoBank</p>

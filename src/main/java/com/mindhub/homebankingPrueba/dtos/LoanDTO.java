@@ -15,6 +15,8 @@ public class LoanDTO {
 
     private List<Integer> payments;
 
+    private double percentageLoan;
+
     public LoanDTO() {
     }
 
@@ -41,6 +43,7 @@ public class LoanDTO {
         return payments;
     }
 
-
-
+    public double getPercentageLoan() {
+        return percentageLoan;
+    }
 }

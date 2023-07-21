@@ -11,4 +11,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface CardRepository extends JpaRepository<Card, Long> {
     boolean  existsByClientAndColorAndType(Client client, CardColor cardColor, CardType cardType);
     boolean existsByNumber(String number);
+    Card findByNumber (String number);
 }

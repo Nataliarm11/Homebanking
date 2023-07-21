@@ -32,7 +32,7 @@
                     <a class="nav-link btn  d-flex justify-content-center fw-bold text-white purple-button-one" href="#">Accounts</a>
                     <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/cards.html">Cards</a>
                     <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/transfers.html">Make your transfer</a>
-                    <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/loan-application.html" >apply</a>
+                    <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/loan-application.html" >Apply</a>
                   </div>
                   <a class="btn btn-danger text-black fw-bold d-flex justify-content-center align-items-center log-out" href="" @click.prevent="logOut">Sign Out</a>
                 </div>
@@ -54,71 +54,44 @@
               </h5>
 
               <div  class="d-flex flex-wrap gap-5 justify-content-center p-5 text-black">
-                <div class="card" v-for="(client, index) of accounts">
+                <div class="card" v-for="(account, index) of activeAccounts">
                   <img v-bind:src="cardImage[index]" class="card__img" alt="cardCredit" alt="">
                   <div class="card__descr-wrapper">
                     <div class="card__title">
-                      <h5 class="card-title text-center"><span class="fw-bold text-black">Account number:</span><br>{{client.number}}</h5>
+                      <h5 class="card-title text-center"><span class="fw-bold text-black">Account number:</span><br>{{account.number}}</h5>
                     </div>
                   <div class="card__descr">
                     <ul class="list-group list-group-flush ">
-                      <li class="list-group-item text-black"><span class="fw-bold text-black">Balance:</span>${{client.balance.toFixed(1)}}</li>
-                      <li class="list-group-item text-black"><span class="fw-bold text-black">Date of Creation:</span>{{client.creationDate}}</li>
+                      <li class="list-group-item text-black"><span class="fw-bold text-black">Account Type : </span>{{account.accountType}}</li>
+                      <li class="list-group-item text-black"><span class="fw-bold text-black">Balance : </span>${{account.balance.toFixed(1)}}</li>
+                      <li class="list-group-item text-black text-center"><span class="fw-bold text-black">Date of Creation : <br></span>{{account.creationDate}}</li>
                     </ul>
-                    <div class="card-body text-center">
-                      <a class="btn btn-secondary text-black purple-button-two" v-bind:href="'./account.html?id=' + client.id" role="button">See my transactions</a>
-                    </div>
-
+                  </div> 
                   </div>
-
+                  <div class="d-flex flex-wrap justify-content-center">
+                    <a class="btn btn-secondary text-black purple-button-two" v-bind:href="'./account.html?id=' + account.id" role="button">See my transactions</a>
+                    <button class="btn text-black fw-bold d-flex justify-content-center align-items-center log-out m-1" @click="deleteAccount(account.id)">Delete Account</button>
                   </div>
                 </div>
-                <div v-if="accounts.length === 0" class="d-flex justify-content-center pt-5 pb-5">
+                <div v-if="activeAccounts.length === 0" class="d-flex justify-content-center pt-5 pb-5">
                   <h3>You do not have accounts.</h3>
                 </div>
               </div>
 
-
-
-
-              
-<!-- 
-              <div class="cardsMain d-flex flex-wrap gap-5 justify-content-center p-5">
-                <div class="card-container" v-for=" (client, index) of accounts">
-                    <div class="card">
-                    <div class="front-content">
-                        <img v-bind:src="cardImage[index]" class="card-img-top" alt="cardCredit">
-                    </div>
-                    <div class="content">
-                      <h5 class="card-title text-center text-black"> <span class="fw-bold text-black">Account number:</span><br>{{client.number}}</h5>
-                      <h6 class="text-black">
-                        <span class="fw-bold text-black">Balance:</span>
-                         ${{client.balance.toFixed(1)}}
-                      </h6>
-                      <h6 class="text-black">
-                        <span class="fw-bold text-black">Date of Creation:</span>
-                         {{client.creationDate}}
-                      </h6> 
-                      <a class="btn btn-light text-black fw-bold" v-bind:href="'./account.html?id='+client.id" role="button">See my transactions</a>
-                    </div>
-                  </div>
-                  <div  v-if="accounts.length == 0"  class=" d-flex justify-content-center pt-5 pb-5" >
-                    <h3>You do not have accounts.</h3>
-                  </div>
-                  </div>
-              </div> -->
-
               <div class="d-flex justify-content-center p-5">
-                <button v-if="accounts.length<3" class="btn purple-button-one text-black" @click.prevent="createAccount">Create account</button>
+                <button v-if="activeAccounts.length<3" class="btn purple-button-one text-black" @click.prevent="createAccount">Create account</button>
               </div>
 
               <h5 class="px-5 py-2 text-black fw-bolder">
                 Loans: Expand to see your loans
               </h5>
 
+
+              
+
               <div class="d-flex justify-content-center gap-5 flex-wrap p-5">
                 <div class="cardLoan border border-white" v-for="loan of loans">
-                    <div class="headerLoan " >
+                    <div class="headerLoan" >
                         <div class="img-box">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-bank" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="purple" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -134,12 +107,15 @@
                         </div>
                         <h1 class="title text-center mx-5">My loans:{{loan.loanName}}</h1>
                     </div>
-                    <div class="content">
-                        <p> Amount: ${{loan.amount.toFixed(2)}} </p>
-                        <p> Payments: {{loan.payments}} fee </p>
-                        <p> monthly: ${{ monthly(loan.amount, loan.payments) }} </p>
+                    <div class="content d-flex flex-column align-items-center text-center justify-content-center">
+                        <p><span class="fw-bold">Total Amount:</span> ${{loan.amount.toFixed(2)}} </p>
+                        <p><span class="fw-bold"> Payments:</span> Of {{loan.payments}} payments that you must make, you have made {{loan.remainingPayments}} payments  </p>
+                        <p><span class="fw-bold"> monthly payment:</span> ${{ monthly(loan.amount, loan.payments) }} </p>
+                        <p> <span class="fw-bold">Current Loan Amount:</span> ${{ loan.remainingAmount }} </p>
+                        <a class="nav-link btn  d-flex justify-content-center text-black purple-button purple-button-one" v-bind:href="'./loan-pay.html?id=' + loan.id" >Pay Loan</a>
                     </div>
                 </div> 
+
 
                 <div  v-if="loans.length === 0"  class=" d-flex justify-content-center pt-5 pb-5" >
                     <h3>You do not have loans.</h3>
@@ -195,9 +171,10 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="../js/accounts.js"></script>
     
 </body>

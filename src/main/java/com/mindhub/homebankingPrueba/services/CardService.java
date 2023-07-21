@@ -12,4 +12,8 @@ public interface CardService {
     boolean existsByClientAndColorAndType(Client client, CardColor cardColor, CardType cardType);
 
     public void saveCard (Card card);
+
+    Card findById(Long id);
+
+    Card findByNumber(String number);
 }

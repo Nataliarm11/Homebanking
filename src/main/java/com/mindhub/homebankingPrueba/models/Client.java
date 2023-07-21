@@ -20,8 +20,11 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
+
     private String firstName;
+
     private String lastName;
+
     private String email;
 
     private String password;
@@ -46,7 +49,6 @@ public class Client {
         this.password = password;
     }
 
-
     public long getId(){
         return id;
     }
@@ -54,8 +56,6 @@ public class Client {
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
-
-
 
     public String getFirstName(){
         return firstName;

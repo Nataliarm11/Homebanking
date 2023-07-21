@@ -5,6 +5,7 @@ import com.mindhub.homebankingPrueba.models.ClientLoan;
 
 
 public class ClientLoanDTO {
+
     private long id;
 
     private long loanId;
@@ -15,12 +16,18 @@ public class ClientLoanDTO {
 
     private int payments;
 
+    private int remainingPayments;
+
+    private double remainingAmount;
+
     public ClientLoanDTO(ClientLoan clientLoan) {
         this.id = clientLoan.getId();
         this.loanId = clientLoan.getLoan().getId();
         this.loanName = clientLoan.getLoan().getName();
         this.amount = clientLoan.getAmount();
         this.payments = clientLoan.getPayments();
+        this.remainingPayments = clientLoan.getRemainingPayments();
+        this.remainingAmount = clientLoan.getRemainingAmount();
     }
 
     public long getId() {
@@ -31,31 +38,23 @@ public class ClientLoanDTO {
         return loanId;
     }
 
-    public void setLoanId(long loanId) {
-        this.loanId = loanId;
-    }
-
     public String getLoanName() {
         return loanName;
-    }
-
-    public void setLoanName(String loanName) {
-        this.loanName = loanName;
     }
 
     public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
     public int getPayments() {
         return payments;
     }
 
-    public void setPayments(int payments) {
-        this.payments = payments;
+    public int getRemainingPayments() {
+        return remainingPayments;
+    }
+
+    public double getRemainingAmount() {
+        return remainingAmount;
     }
 }

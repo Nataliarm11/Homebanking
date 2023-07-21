@@ -19,16 +19,18 @@ public class WebAuthorization {
 
 
     @Bean
-    public DefaultSecurityFilterChain filterchain(HttpSecurity http) throws Exception{
+    public DefaultSecurityFilterChain filterchain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/web/pages/index.html","/web/js/**","/web/assets/images/**","/web/assets/styles/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/clients/**").permitAll()
-                .antMatchers(HttpMethod.POST,"/api/login").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/login", "/api/payments/**", "/api/payments").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/logout").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/clients", "/api/transactions", "/api/loans").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards", "/api/clients/cards/renew/**","/api/client/loan/payments", "/api/client/loan/payments/**").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.PATCH, "/api/clients/current/cards/**", "/api/accounts/delete/**").hasAuthority("CLIENT")
                 .antMatchers("/api/clients/current","/api/accounts/**","/api/loans" ).permitAll()
-                .antMatchers("/web/pages/account.html","/web/pages/accounts.html","/web/pages/cards.html","/web/pages/editProfile.html","/web/pages/wallet.html").hasAuthority("CLIENT")
-                .antMatchers(HttpMethod.POST, "/api/clients/current/accounts", "/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers("/web/pages/account.html","/api/clients/current/**","/api/clients/accounts", "/api/client/loans/**" ,"/web/pages/accounts.html","/web/pages/cards.html","/web/pages/editProfile.html","/web/pages/wallet.html").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST, "/api/loans/**").hasAuthority("ADMIN")
                 .antMatchers("/rest/**", "/api/**", "/web/pages/manager.html").hasAuthority("ADMIN");
 
         http.formLogin()
@@ -50,6 +52,8 @@ public class WebAuthorization {
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
         // if logout is successful, just send a success response
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
+
+        http.cors();
 
         return http.build();
     }

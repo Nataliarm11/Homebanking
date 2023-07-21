@@ -13,6 +13,7 @@ const app = createApp({
       destinationAccountNumber: '',
       amount: null,
       loanId:null,
+      accountsActiv:[],
       
     };
   },
@@ -20,6 +21,7 @@ const app = createApp({
   created() {
     this.loadData();
     this.loansFunction();
+    this.accountsActive();
 
     
   },
@@ -32,6 +34,16 @@ const app = createApp({
           this.accounts = this.clients.accounts;
           this.accounts.sort((a, b) => a.id - b.id);
           console.log(this.accounts);
+        })
+        .catch(error => console.log(error));
+    },
+
+    accountsActive() {
+      axios.get('/api/clients/accounts')
+        .then(response => {
+          this.accountsActiv = response.data;
+          this.accountsActiv.sort((a, b) => a.id - b.id);
+          console.log(this.accountsActiv);
         })
         .catch(error => console.log(error));
     },
@@ -56,35 +68,41 @@ const app = createApp({
 
 
     createLoans() {
-      console.log(this.loanType, this.amount, this.payment,this.destinationAccountNumber)
-        if (confirm('Are you sure about applying for a loan?')) {
-            axios.post('/api/loans', {
-              loanId: this.loanType,
-              amount: this.amount,
-              payment: this.payment,
-              destinationAccountNumber: this.destinationAccountNumber,
-            })
-            .then(response => {
-                alert('The transfer was successful.');
-                window.location.href = '/web/pages/accounts.html'
-            })
-            .catch(error => {
-              Swal.fire({
-                title: "Error",
-                text: error.response.data,
-                icon: "error"
-              });
-                console.log(error);
-
+      console.log(this.loanType, this.amount, this.payment, this.destinationAccountNumber);
+  
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Are you sure about applying for a loan?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post('/api/loans', {
+            loanId: this.loanType,
+            amount: this.amount,
+            payment: this.payment,
+            destinationAccountNumber: this.destinationAccountNumber,
+          })
+          .then(response => {
+            Swal.fire('Success', 'The loan application was successful.', 'success').then(() => {
+              window.location.href = '/web/pages/accounts.html';
             });
+          })
+          .catch(error => {
+            Swal.fire({
+              title: 'Error',
+              text: error.response.data,
+              icon: 'error'
+            });
+            console.log(error);
+          });
         }
+      });
     },
-
-
     
-      
-
-
 
     logOut() {
       axios.post('/api/logout')
@@ -104,9 +122,3 @@ const app = createApp({
 });
 
 app.mount('#app');
-
-
-
-                    // this.loansData.forEach(loan => {
-                    //     const payments = loan.payments;
-                    //     console.log(payments);

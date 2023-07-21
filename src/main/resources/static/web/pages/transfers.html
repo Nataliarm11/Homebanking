@@ -10,10 +10,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&display=swap" rel="stylesheet">
-    <title>R BANK | Transfers</title>
+    <title> Transfers | NOVOBANK</title>
 </head>
 <body>
     <div id="app">
+      
         <header>
             <nav class="containerHeader navbar navbar-expand-md navbar-text" data-bs-theme="dark">
               <div class="container-fluid justify-content-between">
@@ -25,11 +26,9 @@
                 </button>
                 <div class="collapse navbar-collapse flex-grow-0 gap-5" id="navbarNavAltMarkup">
                   <div class="navbar-nav">
-                    <!-- <a class=" btn d-flex justify-content-center text-black purple-button" href="../pages/wallet.html">Wallet</a> -->
                     <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/accounts.html">Accounts</a>
                     <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/cards.html" >Cards</a>
                     <a class="nav-link btn fw-bold  d-flex justify-content-center text-black purple-button-one"  href="#">Make your transfer</a>
-                    <!-- <a class="nav-link btn  d-flex justify-content-center text-black purple-button" href="../pages/loan-application.html">apply</a> -->
                   </div>
                   <a class="btn text-black fw-bold d-flex justify-content-center align-items-center log-out" href="" @click.prevent="logOut">Sign Out</a>
                 </div>
@@ -51,13 +50,13 @@
                   <div>
                     <label for="originAccount">Source account:</label>
                     <select id="originAccount" v-model="originNumber">
-                      <option v-for="account in accounts" :value="account.number">{{ account.number }} - Balance: ${{ account.balance }}</option>
+                      <option v-for="account in accountsActiv" :value="account.number">{{ account.number }} - Balance: ${{ account.balance }}</option>
                     </select>
                   </div>
                   <div>
                     <label for="destinationAccount">Destination account:</label>
                     <select id="destinationAccount" v-model="destinationNumber">
-                      <option v-for="account in accounts" :value="account.number" :disabled="account.number === originNumber">{{ account.number }}</option>
+                      <option v-for="account in accountsActiv" :value="account.number" :disabled="account.number === originNumber">{{ account.number }}</option>
                     </select>
                   </div>
                 </div>

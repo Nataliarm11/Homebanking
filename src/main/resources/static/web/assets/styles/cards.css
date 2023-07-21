@@ -48,6 +48,13 @@ padding: 1rem;
   background-image: linear-gradient(to bottom, #e93535, #d42828);
 }
 
+.btn-renew {
+  background-color:purple;
+  border-color: purple; 
+  color: #fff;
+  background-image: linear-gradient(to bottom, #41c435, rgb(46, 212, 40));
+}
+
 .colorful-button {
   display: inline-block;
   padding: 10px 20px;
@@ -245,12 +252,28 @@ height: 24px;
 }
     
 .silver {
-  background: linear-gradient(321.03deg, rgb(122, 122, 122), rgb(203, 202, 202)) !important;;
+  background: linear-gradient(321.03deg, rgb(122, 122, 122), rgb(203, 202, 202)) !important;
+}
+
+.cardExpired {
+  background: linear-gradient(321.03deg, rgb(255, 15, 15), rgb(255, 58, 58))!important;
+  position: relative;
+}
+
+.cardExpired::after {
+  content: "Expired Card";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 170%);
+  color: rgba(255, 0, 0, 0.697);
+  font-weight: bolder;
+  font-size: 25px;
 }
 
 
 .card {
-  width: 320px;
+  width: 300px;
   height: 200px;
   border-radius: 10px;
   perspective: 1000px;
@@ -427,6 +450,8 @@ height: 24px;
   font-weight: 400;
   color: #a3d4e7;
 }
+
+
 
 /* DESPLAZAMIENTO */
 

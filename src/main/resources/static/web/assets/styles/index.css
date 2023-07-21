@@ -410,3 +410,9 @@ font-family: monospace;
 margin-left: 3px;
 font-size: smaller;
 }
+
+@media (min-width: 320px) and (max-width: 880px) {
+  .banner {
+      display: none;
+  }
+}

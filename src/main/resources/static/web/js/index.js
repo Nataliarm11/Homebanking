@@ -1,43 +1,75 @@
 const { createApp } = Vue;
 
 const app = createApp({
-
     data() {
         return {
             email: "",
             password: "",
             emailRegister: "",
-            passwordRegister:"",
-            firstNameRegister:"",
-            lastNameRegister:"",
-        }
+            passwordRegister: "",
+            firstNameRegister: "",
+            lastNameRegister: "",
+        };
     },
 
     methods: {
         logIn() {
-                console.log(this.email);
-                console.log(this.password);
-                axios.post('/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' }})
-                    .then(response => {
-                        console.log("Welcome");
-                        Swal.fire({
-                            title: 'success',
-                            text: 'Welcome',
-                            icon: 'success'
-                          });
-                        window.location.href = '/web/pages/accounts.html';
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        Swal.fire({
-                            title: "Error",
-                            text: error.message, 
-                            icon: "error"
-                          });
-
-                    });
+            if (this.email && this.password) {
+                if ( this.email.includes("admin")) {
+                    axios.post(
+                        "/api/login",
+                        `email=${this.email}&password=${this.password}`,
+                        { headers: { 'content-type': 'application/x-www-form-urlencoded' } }
+                    )
+                        .then(res => {
+                            if (res.status == 200) {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Welcome!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                setTimeout(() => {
+                                    window.location.href = "/web/manager.html";
+                                }, 1800);
+                            }
+                        })
+                        .catch(err => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Incorrect, try again!!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        });
+                } else {
+                    axios.post('/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' }})
+                        .then(response => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'success',
+                                title: 'Welcome!',
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                            setTimeout(() => {
+                                window.location.href = "/web/pages/accounts.html";
+                            }, 1800);
+                        })
+                        .catch(err => {
+                            Swal.fire({
+                                position: 'center',
+                                icon: 'error',
+                                title: 'Incorrect, try again!!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        });
+                }
+            }
         },
-        
 
         register() {
             if (this.emailRegister && this.passwordRegister && this.firstNameRegister && this.lastNameRegister) {
@@ -50,27 +82,42 @@ const app = createApp({
                         console.log("Registered");
                         axios.post('/api/login', `email=${this.emailRegister}&password=${this.passwordRegister}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' }})
                             .then(response => {
-                                console.log(response);
-                                window.location.href = '/web/pages/accounts.html';
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'success',
+                                    title: 'Welcome!',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                });
+                                setTimeout(() => {
+                                    window.location.href = "/web/pages/accounts.html";
+                                }, 1800);
                             })
-                            .catch(error => console.log(error));
+                            .catch(err => {
+                                Swal.fire({
+                                    position: 'center',
+                                    icon: 'error',
+                                    title: 'Incorrect, try again!!',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            });
                     })
-                    .catch(error => console.log(error));
-            } else {
-                Swal.fire({
-                    title: "Error",
-                    text: "Check that all fields are filled out",
-                    icon: "error"
-                });
+                    .catch(err => {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Incorrect, try again!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
             }
-        },
-        
-
-
-
+        }
     }
 });
 
 app.mount("#app");
+
 
   

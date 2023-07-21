@@ -5,8 +5,11 @@ import javax.persistence.criteria.CriteriaBuilder;
 public class LoanApplicationDTO {
 
     private Long loanId;
+
     private Double amount;
+
     private Integer payment;
+
     private String destinationAccountNumber;
 
     public LoanApplicationDTO() {

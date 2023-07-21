@@ -6,12 +6,10 @@ import com.mindhub.homebankingPrueba.models.CardColor;
 import com.mindhub.homebankingPrueba.models.CardType;
 import com.mindhub.homebankingPrueba.models.Client;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class CardDTO {
+
     private long id;
 
     private String cardHolder;
@@ -24,11 +22,13 @@ public class CardDTO {
 
     private short cvv;
 
-    private LocalDateTime thruDate;
+    private LocalDate thruDate;
 
-    private LocalDateTime fromDate;
+    private LocalDate fromDate;
 
     private Client client;
+
+    private boolean activeCard;
 
     public CardDTO() {
     }
@@ -42,6 +42,7 @@ public class CardDTO {
         this.cvv = card.getCvv();
         this.thruDate = card.getThruDate();
         this.fromDate = card.getFromDate();
+        this.activeCard = card.getActiveCard();
     }
 
     public long getId() {
@@ -52,47 +53,33 @@ public class CardDTO {
         return cardHolder;
     }
 
-    public void setCardHolder(String cardHolder) {
-        this.cardHolder = cardHolder;
-    }
-
     public CardType getType() {
         return type;
-    }
-
-    public void setType(CardType type) {
-        this.type = type;
     }
 
     public CardColor getColor() {
         return color;
     }
 
-    public void setColor(CardColor color) {
-        this.color = color;
-    }
-
     public String getNumber() {
         return number;
     }
-
 
     public short getCvv() {
         return cvv;
     }
 
-
-    public LocalDateTime getThruDate() {
+    public LocalDate getThruDate() {
         return thruDate;
     }
-
 
     @JsonIgnore
     public Client getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public boolean getActiveCard() {
+        return activeCard;
     }
+
 }

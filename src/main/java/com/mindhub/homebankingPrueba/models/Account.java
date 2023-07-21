@@ -25,6 +25,9 @@ public class Account {
 
     private double balance;
 
+    private boolean activeAccount;
+
+    private AccountType accountType;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="client_id ")
@@ -36,10 +39,13 @@ public class Account {
 
     public Account (){ }
 
-    public Account ( String number, LocalDate creationDate, double balance ){
+    public Account ( String number, LocalDate creationDate, double balance, boolean activeAccount, AccountType accountType ){
         this.number = number;
         this.creationDate = creationDate;
         this.balance = balance;
+        this.activeAccount = activeAccount;
+        this.accountType = accountType;
+
     }
 
 
@@ -86,6 +92,22 @@ public class Account {
         this.balance = balance;
     }
 
+    public boolean getActiveAccount() {
+        return activeAccount;
+    }
+
+    public void setActiveAccount(boolean activeAccount) {
+        this.activeAccount = activeAccount;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
+
     @JsonIgnore
     public Client getClient() {
         return client;
@@ -94,8 +116,6 @@ public class Account {
     public void setClient (Client client) {
         this.client = client;
     }
-
-
 
 
     @Override

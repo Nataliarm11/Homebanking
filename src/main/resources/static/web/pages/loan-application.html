@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&display=swap" rel="stylesheet">
-    <title>Loans | R Bank</title>
+    <title>Loans | NOVOBANK</title>
 
 </head>
 <body>
@@ -66,14 +66,14 @@
                   <input type="number" id="amount" v-model="amount">
                   <label for="destinationAccountNumber">Destination account:</label>
                   <select id="destinationAccountNumber" v-model="destinationAccountNumber">
-                    <option v-for="account in accounts" :value="account.number">{{ account.number }}</option>
+                    <option v-for="account in accountsActiv" :value="account.number">{{ account.number }}</option>
                   </select>
                 </div>
                 <button type="button" @click="createLoans">Apply</button>
               </form>
               <div class="text-center px-5 py-5 ">
-                <h5 class="text-black ">Please note that the loan amount you requested will be subject to a 20% interest rate. The following will show you how much you will need to pay monthly for the selected amount.</h5>
-                <h7 class="text-black text-uppercase fw-bold ">monthly payment: {{ divisionResult }}</h7>
+                <h5 class="text-black ">Tenga en cuenta que el monto del préstamo que solicitó estará sujeto a la tasa de interés. A continuación se le mostrará cuánto tendrá que pagar mensualmente por el monto seleccionado.</h5>
+                <h6 class="text-black text-uppercase fw-bold ">monthly payment: {{ divisionResult }}</h6>
 
               </div>
           

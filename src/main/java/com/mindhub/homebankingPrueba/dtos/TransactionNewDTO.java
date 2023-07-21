@@ -2,10 +2,12 @@ package com.mindhub.homebankingPrueba.dtos;
 
 public class TransactionNewDTO {
     private double amount;
-    private String description;
-    private String destinationNumber;
-    private String originNumber;
 
+    private String description;
+
+    private String destinationNumber;
+
+    private String originNumber;
 
     public TransactionNewDTO(double amount, String description, String destinationNumber, String originNumber) {
         this.amount = amount;

@@ -60,6 +60,18 @@ const app = createApp({
                 email: "",
             };
         },
+
+        logOut() {
+            axios.post(`/api/logout`)
+                .then(response => {
+                    window.location.href = "../index.html";
+                })
+                .catch(error => console.log(error));
+        }
+        
+        
+
+
     },
 });
 

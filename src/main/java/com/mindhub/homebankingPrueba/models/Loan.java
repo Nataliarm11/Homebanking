@@ -22,6 +22,8 @@ public class Loan {
 
     private double maxAmount;
 
+    private double percentageLoan;
+
     @ElementCollection
     private List<Integer> payments;
 
@@ -31,10 +33,11 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan( String name, double maxAmount, List<Integer> payments) {
+    public Loan( String name, double maxAmount, List<Integer> payments, double percentageLoan) {
         this.name = name;
         this.maxAmount = maxAmount;
         this.payments = payments;
+        this.percentageLoan = percentageLoan;
     }
 
     public long getId() {
@@ -65,6 +68,14 @@ public class Loan {
         this.payments = payments;
     }
 
+    public double getPercentageLoan() {
+        return percentageLoan;
+    }
+
+    public void setPercentageLoan(double percentageLoan) {
+        this.percentageLoan = percentageLoan;
+    }
+
     @JsonIgnore
     public Set<Client> getClients() {
         return clientLoans.stream()
@@ -76,7 +87,6 @@ public class Loan {
         clientLoan.setLoan(this);
         clientLoans.add(clientLoan);
     }
-
 
     @Override
     public String toString() {
